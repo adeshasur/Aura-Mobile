@@ -126,7 +126,7 @@ export default function Hero() {
         <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-black/50" />
       </div>
 
-      <div ref={textRef} className="absolute inset-0 z-10 flex flex-col items-center justify-center pointer-events-none">
+      <div ref={textRef} className="absolute inset-0 z-50 flex flex-col items-center justify-center pointer-events-none">
         <motion.p
           className="text-[11px] uppercase tracking-[0.5em] text-zinc-400 mb-6"
           initial={{ opacity: 0, y: 20 }}
@@ -150,62 +150,43 @@ export default function Hero() {
           transition={{ duration: 0.5, delay: 0.8 }}
         >
           <motion.div
-            className="flex items-center gap-4"
+            className="flex flex-col items-center"
             initial={{ opacity: 0, y: 30, filter: 'blur(10px)' }}
             animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 1.0 }}
           >
-            <div className="flex items-center justify-center w-12 h-12 rounded-2xl bg-gradient-to-br from-zinc-700/50 to-zinc-900/50 border border-zinc-600/30 backdrop-blur-sm">
-              <svg className="w-6 h-6 text-white" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
-              </svg>
-            </div>
-            <div className="flex flex-col">
-              <span className="text-sm text-zinc-500 tracking-widest uppercase mb-1">Introducing</span>
-              <span className="text-xl md:text-2xl lg:text-3xl font-bold tracking-wide">
-                <TypewriterText text="iPhone 17 Pro Max" delay={1.2} className="shimmer-text" />
-              </span>
-            </div>
+            <span className="text-xs text-zinc-600 tracking-[0.3em] uppercase mb-2">Introducing</span>
+            <span className="text-2xl md:text-3xl lg:text-4xl font-bold tracking-wide">
+              <TypewriterText text="iPhone 17 Pro Max" delay={1.2} className="shimmer-text" />
+            </span>
           </motion.div>
 
-          <div className="relative flex items-center justify-center">
-            <div className="absolute inset-0 flex items-center">
-              <div className="w-px h-16 bg-gradient-to-b from-transparent via-zinc-600 to-transparent" />
-            </div>
-            <motion.div
-              className="relative z-10 px-6 py-3 rounded-full border border-zinc-700/50 bg-black/50 backdrop-blur-sm"
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5, delay: 1.2 }}
-            >
-              <span className="text-sm font-bold tracking-widest bg-gradient-to-r from-zinc-400 to-zinc-600 bg-clip-text text-transparent">
-                VS
-              </span>
-            </motion.div>
-          </div>
+          <motion.div
+            className="relative px-6 py-4 rounded-full border border-zinc-700/50 bg-black/50 backdrop-blur-sm"
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5, delay: 1.2 }}
+          >
+            <span className="text-sm font-bold tracking-widest bg-gradient-to-r from-zinc-400 to-zinc-600 bg-clip-text text-transparent">
+              VS
+            </span>
+          </motion.div>
 
           <motion.div
-            className="flex items-center gap-4"
+            className="flex flex-col items-center"
             initial={{ opacity: 0, y: 30, filter: 'blur(10px)' }}
             animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 1.3 }}
           >
-            <div className="flex items-center justify-center w-12 h-12 rounded-2xl bg-gradient-to-br from-zinc-700/50 to-zinc-900/50 border border-zinc-600/30 backdrop-blur-sm">
-              <svg className="w-7 h-7 text-white" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M4.5 4.5v15h15v-15h-15zm13.35 10.5c.47-.65.73-1.5.73-2.5s-.26-1.85-.73-2.5l-1.17-1.5c-.34-.44-.78-.73-1.28-.85-.5-.12-1.05-.05-1.57.19l-.52.24c-.52.24-.97.62-1.28 1.1-.31.48-.48 1.05-.48 1.62v4.4c0 .57.17 1.14.48 1.62.31.48.76.86 1.28 1.1l.52.24c.52.24 1.07.31 1.57.19.5-.12.94-.41 1.28-.85l1.17-1.5z"/>
-              </svg>
-            </div>
-            <div className="flex flex-col">
-              <span className="text-sm text-zinc-500 tracking-widest uppercase mb-1">Featuring</span>
-              <span className="text-xl md:text-2xl lg:text-3xl font-bold tracking-wide">
-                <TypewriterText text="Galaxy S26 Ultra" delay={1.6} className="shimmer-text" />
-              </span>
-            </div>
+            <span className="text-xs text-zinc-600 tracking-[0.3em] uppercase mb-2">Featuring</span>
+            <span className="text-2xl md:text-3xl lg:text-4xl font-bold tracking-wide">
+              <TypewriterText text="Galaxy S26 Ultra" delay={1.6} className="shimmer-text" />
+            </span>
           </motion.div>
         </motion.div>
       </div>
 
-      <div ref={canvasRef} className="absolute inset-0 z-20">
+      <div ref={canvasRef} className="absolute inset-0 z-30">
         <Canvas camera={{ position: [0, 0, 7], fov: 40 }} dpr={[1, 2]}>
           <PhoneModels 
             iphoneRef={iphoneGroupRef} 
@@ -214,7 +195,7 @@ export default function Hero() {
         </Canvas>
       </div>
 
-      <div className="absolute bottom-16 z-30 flex justify-center w-full">
+      <div className="absolute bottom-16 z-50 flex justify-center w-full pointer-events-auto">
         <motion.div
           className="flex flex-col items-center gap-2"
           initial={{ opacity: 0, y: 20 }}

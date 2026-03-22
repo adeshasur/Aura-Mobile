@@ -41,7 +41,74 @@ function App() {
           {/* 1. Hero Section (The Ultimate Face-Off) */}
           <Hero />
 
-          {/* Next Section - Scroll Animation Demo */}
+          {/* 2. Brand Showcase Section */}
+          <section className="relative py-20 bg-black border-t border-white/5">
+            <div className="max-w-7xl mx-auto px-6">
+              <p className="text-[10px] uppercase tracking-[0.5em] text-zinc-600 text-center mb-12">
+                Featured Brands
+              </p>
+              
+              <div className="relative overflow-hidden">
+                <div className="flex gap-16 animate-marquee">
+                  {[
+                    { name: 'Apple', src: '/logos/apple.png' },
+                    { name: 'Samsung', src: '/logos/samsung.png' },
+                    { name: 'Xiaomi', src: '/logos/xiaomi.png' },
+                    { name: 'Huawei', src: '/logos/huawei.png' },
+                    { name: 'Oppo', src: '/logos/oppo.png' },
+                    { name: 'Vivo', src: '/logos/vivo.png' },
+                    { name: 'OnePlus', src: '/logos/oneplus.png' },
+                    { name: 'Nokia', src: '/logos/nokia.png' },
+                    { name: 'Sony', src: '/logos/sony.png' },
+                    { name: 'Google', src: '/logos/google.png' },
+                  ].concat([
+                    { name: 'Apple', src: '/logos/apple.png' },
+                    { name: 'Samsung', src: '/logos/samsung.png' },
+                    { name: 'Xiaomi', src: '/logos/xiaomi.png' },
+                    { name: 'Huawei', src: '/logos/huawei.png' },
+                    { name: 'Oppo', src: '/logos/oppo.png' },
+                    { name: 'Vivo', src: '/logos/vivo.png' },
+                    { name: 'OnePlus', src: '/logos/oneplus.png' },
+                    { name: 'Nokia', src: '/logos/nokia.png' },
+                    { name: 'Sony', src: '/logos/sony.png' },
+                    { name: 'Google', src: '/logos/google.png' },
+                  ]).map((brand, idx) => (
+                    <div
+                      key={idx}
+                      className="flex-shrink-0 group cursor-pointer"
+                    >
+                      <div className="relative w-32 h-16 flex items-center justify-center">
+                        <img
+                          src={brand.src}
+                          alt={brand.name}
+                          className="h-8 w-auto object-contain brightness-0 opacity-50 grayscale group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500"
+                          onError={(e) => {
+                            e.target.style.display = 'none';
+                            e.target.parentNode.innerHTML += `<span class="text-xl font-semibold text-zinc-600 group-hover:text-white transition-colors">${brand.name}</span>`;
+                          }}
+                        />
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+            
+            <style>{`
+              @keyframes marquee {
+                0% { transform: translateX(0); }
+                100% { transform: translateX(-50%); }
+              }
+              .animate-marquee {
+                animation: marquee 30s linear infinite;
+              }
+              .animate-marquee:hover {
+                animation-play-state: paused;
+              }
+            `}</style>
+          </section>
+
+          {/* 3. Next Section - Scroll Animation Demo */}
           <section className="relative h-screen bg-gradient-to-b from-black via-zinc-950 to-black flex items-center justify-center overflow-hidden">
             <div className="absolute inset-0">
               <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-500/5 rounded-full blur-[120px]" />
@@ -65,10 +132,10 @@ function App() {
             </div>
           </section>
 
-          {/* 2. Brands Showcase */}
+          {/* 4. Brands Marquee */}
           <BrandsMarquee />
 
-          {/* 3. Brand Vault */}
+          {/* 5. Brand Vault */}
           <BrandVault />
         </main>
 
