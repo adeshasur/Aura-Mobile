@@ -1,10 +1,10 @@
-import { useRef } from 'react';
+import { useRef, forwardRef } from 'react';
 import { useGLTF } from '@react-three/drei';
 import { useFrame, useThree } from '@react-three/fiber';
-import { Float, Environment, ContactShadows, PresentationControls } from '@react-three/drei';
+import { Float, Environment, ContactShadows } from '@react-three/drei';
 import * as THREE from 'three';
 
-function IphoneModel({ position = [0, 0, 0], scale = 1, rotation = [0, 0, 0] }) {
+export const IphoneModel = forwardRef(function IphoneModel({ position = [0, 0, 0], scale = 1, rotation = [0, 0, 0] }, ref) {
   const { scene } = useGLTF('/Phone 17 Pro Max Simple.glb');
   const groupRef = useRef();
   const { pointer } = useThree();
@@ -31,14 +31,18 @@ function IphoneModel({ position = [0, 0, 0], scale = 1, rotation = [0, 0, 0] }) 
       floatIntensity={0.3}
       floatingRange={[-0.05, 0.05]}
     >
-      <group ref={groupRef} position={position} scale={scale} rotation={rotation}>
+      <group ref={(node) => {
+        groupRef.current = node;
+        if (typeof ref === 'function') ref(node);
+        else if (ref) ref.current = node;
+      }} position={position} scale={scale} rotation={rotation}>
         <primitive object={scene} />
       </group>
     </Float>
   );
-}
+});
 
-function SamsungModel({ position = [0, 0, 0], scale = 1, rotation = [0, 0, 0] }) {
+export const SamsungModel = forwardRef(function SamsungModel({ position = [0, 0, 0], scale = 1, rotation = [0, 0, 0] }, ref) {
   const { scene } = useGLTF('/s_amsung_galaxy_s25_ultra_galaxy.glb');
   const groupRef = useRef();
   const { pointer } = useThree();
@@ -65,12 +69,16 @@ function SamsungModel({ position = [0, 0, 0], scale = 1, rotation = [0, 0, 0] })
       floatIntensity={0.3}
       floatingRange={[-0.05, 0.05]}
     >
-      <group ref={groupRef} position={position} scale={scale} rotation={rotation}>
+      <group ref={(node) => {
+        groupRef.current = node;
+        if (typeof ref === 'function') ref(node);
+        else if (ref) ref.current = node;
+      }} position={position} scale={scale} rotation={rotation}>
         <primitive object={scene} />
       </group>
     </Float>
   );
-}
+});
 
 function Lights() {
   return (
@@ -128,38 +136,31 @@ function Lights() {
   );
 }
 
-export default function PhoneModels() {
+export default function PhoneModels({ iphoneRef, samsungRef }) {
   return (
     <>
       <Environment preset="city" background={false} />
       <Lights />
       
-      <PresentationControls
-        global
-        config={{ mass: 2, tension: 500 }}
-        snap={{ mass: 4, tension: 1500 }}
-        rotation={[0, 0, 0]}
-        polar={[-Math.PI / 6, Math.PI / 6]}
-        azimuth={[-Math.PI / 4, Math.PI / 4]}
-      >
-        <IphoneModel 
-          position={[-2.5, 0, 0]} 
-          scale={25} 
-          rotation={[0, Math.PI, 0]}
-        />
-        <SamsungModel 
-          position={[2.5, 0, 0]} 
-          scale={25} 
-          rotation={[0, Math.PI, 0]}
-        />
-      </PresentationControls>
+      <IphoneModel 
+        ref={iphoneRef}
+        position={[-2.5, 0, 0]} 
+        scale={22} 
+        rotation={[0, Math.PI, 0]}
+      />
+      <SamsungModel 
+        ref={samsungRef}
+        position={[2.5, 0, 0]} 
+        scale={22} 
+        rotation={[0, Math.PI, 0]}
+      />
 
       <ContactShadows 
-        position={[0, -8, 0]} 
+        position={[0, -6, 0]} 
         opacity={0.5} 
-        scale={20} 
+        scale={18} 
         blur={4} 
-        far={10} 
+        far={8} 
         color="#000000" 
       />
     </>
