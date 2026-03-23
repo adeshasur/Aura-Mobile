@@ -57,9 +57,8 @@ export default function Showroom() {
               <span className="text-xs uppercase tracking-[0.2em] text-zinc-400 group-hover:text-white transition-colors">Back to Home</span>
             </Link>
             <h1 className="text-2xl font-bold tracking-widest uppercase text-white">Showroom</h1>
-            <div className="flex items-center gap-6 text-xs font-medium uppercase tracking-[0.15em] text-zinc-400">
+            <div className="flex items-center gap-8 text-xs font-medium uppercase tracking-[0.15em] text-zinc-400">
               <Link to="/showroom" className="opacity-100 text-white">Showroom</Link>
-              <Link to="/the-vault" className="opacity-80 hover:opacity-100 hover:text-white transition-all duration-300">The Vault</Link>
               <Link to="/support" className="opacity-80 hover:opacity-100 hover:text-white transition-all duration-300">Support</Link>
             </div>
           </div>
