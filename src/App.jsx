@@ -4,6 +4,77 @@ import BrandsMarquee from './components/BrandsMarquee';
 import BrandVault from './components/BrandVault';
 import Footer from './components/Footer';
 import Preloader from './components/Preloader';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Autoplay, Navigation } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/navigation';
+
+const applePhones = [
+  {
+    id: 1,
+    name: 'iPhone 15 Pro Max',
+    color: 'Natural Titanium',
+    storage: '256GB',
+    price: '395,000',
+    imageUrl: 'https://assets.swappie.com/cdn-cgi/image/width=600,height=600,fit=contain,format=auto/swappie-iphone-15-pro-max-natural-titanium-back.png'
+  },
+  {
+    id: 2,
+    name: 'iPhone 15',
+    color: 'Pink',
+    storage: '128GB',
+    price: '245,000',
+    imageUrl: 'https://assets.swappie.com/cdn-cgi/image/width=600,height=600,fit=contain,format=auto/swappie-iphone-15-pink-back.png'
+  },
+  {
+    id: 3,
+    name: 'iPhone 14 Pro',
+    color: 'Deep Purple',
+    storage: '256GB',
+    price: '325,000',
+    imageUrl: 'https://assets.swappie.com/cdn-cgi/image/width=600,height=600,fit=contain,format=auto/swappie-iphone-14-pro-deep-purple-back.png'
+  },
+  {
+    id: 4,
+    name: 'iPhone 13',
+    color: 'Midnight',
+    storage: '128GB',
+    price: '195,000',
+    imageUrl: 'https://assets.swappie.com/cdn-cgi/image/width=600,height=600,fit=contain,format=auto/swappie-iphone-13-midnight-back.png'
+  },
+  {
+    id: 5,
+    name: 'iPhone 15 Plus',
+    color: 'Blue',
+    storage: '256GB',
+    price: '295,000',
+    imageUrl: 'https://assets.swappie.com/cdn-cgi/image/width=600,height=600,fit=contain,format=auto/swappie-iphone-15-plus-blue-back.png'
+  },
+  {
+    id: 6,
+    name: 'iPhone SE (3rd gen)',
+    color: 'Starlight',
+    storage: '64GB',
+    price: '145,000',
+    imageUrl: 'https://assets.swappie.com/cdn-cgi/image/width=600,height=600,fit=contain,format=auto/swappie-iphone-se-2022-starlight-back.png'
+  },
+  {
+    id: 7,
+    name: 'iPhone 14',
+    color: 'Product Red',
+    storage: '128GB',
+    price: '225,000',
+    imageUrl: 'https://assets.swappie.com/cdn-cgi/image/width=600,height=600,fit=contain,format=auto/swappie-iphone-14-productred-back.png'
+  },
+  {
+    id: 8,
+    name: 'iPhone 13 mini',
+    color: 'Pink',
+    storage: '128GB',
+    price: '175,000',
+    imageUrl: 'https://assets.swappie.com/cdn-cgi/image/width=600,height=600,fit=contain,format=auto/swappie-iphone-13-mini-pink-back.png'
+  }
+];
 
 function App() {
   return (
@@ -108,7 +179,7 @@ function App() {
             `}</style>
           </section>
 
-          {/* 3. Product Showcase - Apple iPhone */}
+          {/* 3. Product Showcase - Apple iPhone Slider */}
           <section className="py-16 bg-gradient-to-b from-black to-zinc-950">
             <div className="max-w-7xl mx-auto px-6">
               <div className="flex items-center justify-between mb-10">
@@ -118,41 +189,67 @@ function App() {
                 </div>
                 <a href="#" className="text-sm text-zinc-400 hover:text-white transition-colors tracking-wide">View All →</a>
               </div>
-              
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                {[
-                  { name: 'iPhone 17 Pro Max', color: 'Natural Titanium', storage: '256GB', price: '395,000', img: '/phones/iphone17-pro.png' },
-                  { name: 'iPhone 17 Pro', color: 'Black Titanium', storage: '128GB', price: '345,000', img: '/phones/iphone17-pro.png' },
-                  { name: 'iPhone 16', color: 'Pink', storage: '128GB', price: '245,000', img: '/phones/iphone16.png' },
-                  { name: 'iPhone 15', color: 'Blue', storage: '128GB', price: '195,000', img: '/phones/iphone15.png' },
-                ].map((product, idx) => (
-                  <div key={idx} className="group relative bg-zinc-900/50 border border-white/10 rounded-2xl p-5 hover:border-white/20 hover:shadow-[0_0_30px_rgba(255,255,255,0.05)] transition-all duration-500">
-                    <div className="relative h-48 flex items-center justify-center mb-4 overflow-hidden">
-                      <img
-                        src={product.img}
-                        alt={product.name}
-                        className="h-40 w-auto object-contain group-hover:scale-105 transition-transform duration-500"
-                        onError={(e) => {
-                          e.target.style.display = 'none';
-                          e.target.parentNode.innerHTML = `<div class="h-40 w-24 bg-gradient-to-br from-zinc-800 to-zinc-900 rounded-xl flex items-center justify-center text-zinc-600"><svg class="w-12 h-12" fill="currentColor" viewBox="0 0 24 24"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg></div>`;
-                        }}
-                      />
-                      <button className="absolute top-0 right-0 p-2 rounded-full bg-black/50 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity">
-                        <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-                        </svg>
-                      </button>
+            </div>
+            
+            <div className="relative">
+              <Swiper
+                modules={[Autoplay, Navigation]}
+                spaceBetween={30}
+                slidesPerView={1}
+                autoplay={{
+                  delay: 3000,
+                  disableOnInteraction: false,
+                  pauseOnMouseEnter: true,
+                }}
+                loop={true}
+                navigation={{
+                  nextEl: '.swiper-button-next-custom',
+                  prevEl: '.swiper-button-prev-custom',
+                }}
+                breakpoints={{
+                  640: { slidesPerView: 2 },
+                  1024: { slidesPerView: 3 },
+                  1280: { slidesPerView: 4 },
+                }}
+                className="!px-6"
+              >
+                {applePhones.map((phone) => (
+                  <SwiperSlide key={phone.id}>
+                    <div className="group relative bg-zinc-900/50 border border-white/10 rounded-2xl p-5 hover:border-white/20 hover:shadow-[0_0_30px_rgba(255,255,255,0.05)] transition-all duration-500 h-full">
+                      <div className="relative h-56 flex items-center justify-center mb-4 overflow-hidden">
+                        <img
+                          src={phone.imageUrl}
+                          alt={phone.name}
+                          className="h-44 w-auto object-contain group-hover:scale-105 transition-transform duration-500"
+                        />
+                        <button className="absolute top-0 right-0 p-2 rounded-full bg-black/50 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity">
+                          <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                          </svg>
+                        </button>
+                      </div>
+                      <div className="space-y-2">
+                        <p className="text-xs text-zinc-500 uppercase tracking-wide">{phone.color} • {phone.storage}</p>
+                        <h3 className="text-lg font-semibold text-white">{phone.name}</h3>
+                        <p className="text-xl font-bold text-white">Rs. {phone.price}</p>
+                        <button className="w-full mt-3 py-3 rounded-xl bg-white text-black font-semibold text-sm uppercase tracking-wider hover:bg-zinc-200 transition-colors">
+                          Add to Cart
+                        </button>
+                      </div>
                     </div>
-                    <div className="space-y-2">
-                      <p className="text-xs text-zinc-500 uppercase tracking-wide">{product.color} • {product.storage}</p>
-                      <h3 className="text-lg font-semibold text-white">{product.name}</h3>
-                      <p className="text-xl font-bold text-white">Rs. {product.price}</p>
-                      <button className="w-full mt-3 py-3 rounded-xl bg-white text-black font-semibold text-sm uppercase tracking-wider hover:bg-zinc-200 transition-colors">
-                        Add to Cart
-                      </button>
-                    </div>
-                  </div>
+                  </SwiperSlide>
                 ))}
+              </Swiper>
+              
+              <div className="swiper-button-prev-custom absolute left-4 top-1/2 -translate-y-1/2 z-10 w-12 h-12 rounded-full bg-black/50 backdrop-blur-sm border border-white/10 flex items-center justify-center cursor-pointer hover:bg-black/70 transition-colors">
+                <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                </svg>
+              </div>
+              <div className="swiper-button-next-custom absolute right-4 top-1/2 -translate-y-1/2 z-10 w-12 h-12 rounded-full bg-black/50 backdrop-blur-sm border border-white/10 flex items-center justify-center cursor-pointer hover:bg-black/70 transition-colors">
+                <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
               </div>
             </div>
           </section>
@@ -170,21 +267,17 @@ function App() {
               
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                 {[
-                  { name: 'Galaxy S26 Ultra', color: 'Titanium Gray', storage: '512GB', price: '425,000', img: '/phones/galaxy-s26.png' },
-                  { name: 'Galaxy S26+', color: 'Black', storage: '256GB', price: '295,000', img: '/phones/galaxy-s26.png' },
-                  { name: 'Galaxy Z Fold 6', color: 'Navy', storage: '256GB', price: '495,000', img: '/phones/galaxy-fold.png' },
-                  { name: 'Galaxy Z Flip 6', color: 'Lavender', storage: '256GB', price: '295,000', img: '/phones/galaxy-flip.png' },
+                  { name: 'Galaxy S26 Ultra', color: 'Titanium Gray', storage: '512GB', price: '425,000', img: 'https://images.samsung.com/is/image/samsung/p6pim/lk/2401/gallery/lk-galaxy-s24-s928-sm-s928bztqslk-thumb-539325447?$344_344_PNG$' },
+                  { name: 'Galaxy S26+', color: 'Black', storage: '256GB', price: '295,000', img: 'https://images.samsung.com/is/image/samsung/p6pim/lk/2401/gallery/lk-galaxy-s24-s928-sm-s928bztqslk-thumb-539325447?$344_344_PNG$' },
+                  { name: 'Galaxy Z Fold 6', color: 'Navy', storage: '256GB', price: '495,000', img: 'https://images.samsung.com/is/image/samsung/p6pim/lk/2401/gallery/lk-galaxy-s24-s928-sm-s928bztqslk-thumb-539325447?$344_344_PNG$' },
+                  { name: 'Galaxy Z Flip 6', color: 'Lavender', storage: '256GB', price: '295,000', img: 'https://images.samsung.com/is/image/samsung/p6pim/lk/2401/gallery/lk-galaxy-s24-s928-sm-s928bztqslk-thumb-539325447?$344_344_PNG$' },
                 ].map((product, idx) => (
                   <div key={idx} className="group relative bg-zinc-900/50 border border-white/10 rounded-2xl p-5 hover:border-white/20 hover:shadow-[0_0_30px_rgba(255,255,255,0.05)] transition-all duration-500">
-                    <div className="relative h-48 flex items-center justify-center mb-4 overflow-hidden">
+                    <div className="relative h-56 flex items-center justify-center mb-4 overflow-hidden">
                       <img
                         src={product.img}
                         alt={product.name}
-                        className="h-40 w-auto object-contain group-hover:scale-105 transition-transform duration-500"
-                        onError={(e) => {
-                          e.target.style.display = 'none';
-                          e.target.parentNode.innerHTML = `<div class="h-40 w-24 bg-gradient-to-br from-zinc-800 to-zinc-900 rounded-xl flex items-center justify-center text-zinc-600"><svg class="w-12 h-12" fill="currentColor" viewBox="0 0 24 24"><path d="M4.5 4.5v15h15v-15h-15zm13.35 10.5c.47-.65.73-1.5.73-2.5s-.26-1.85-.73-2.5l-1.17-1.5c-.34-.44-.78-.73-1.28-.85-.5-.12-1.05-.05-1.57.19l-.52.24c-.52.24-.97.62-1.28 1.1-.31.48-.48 1.05-.48 1.62v4.4c0 .57.17 1.14.48 1.62.31.48.76.86 1.28 1.1l.52.24c.52.24 1.07.31 1.57.19.5-.12.94-.41 1.28-.85l1.17-1.5z"/></svg></div>`;
-                        }}
+                        className="h-44 w-auto object-contain group-hover:scale-105 transition-transform duration-500"
                       />
                       <button className="absolute top-0 right-0 p-2 rounded-full bg-black/50 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity">
                         <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
