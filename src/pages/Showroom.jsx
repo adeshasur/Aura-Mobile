@@ -121,11 +121,11 @@ export default function Showroom() {
                 onMouseEnter={() => setHoveredId(phone.id)}
                 onMouseLeave={() => setHoveredId(null)}
               >
-                <div className={`absolute top-3 left-3 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-gradient-to-r ${getBrandColor(phone.brand)} text-white`}>
+                <div className={`absolute top-3 left-3 z-20 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-gradient-to-r ${getBrandColor(phone.brand)} text-white bg-opacity-90`}>
                   {phone.brand}
                 </div>
 
-                <div className="relative overflow-hidden rounded-xl">
+                <div className="relative overflow-hidden rounded-xl z-10">
                   <img
                     src={phone.imageUrl}
                     alt={phone.name}
