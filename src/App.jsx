@@ -10,70 +10,16 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 
 const applePhones = [
-  {
-    id: 1,
-    name: 'iPhone 15 Pro Max',
-    color: 'Natural Titanium',
-    storage: '256GB',
-    price: '395,000',
-    imageUrl: 'https://assets.swappie.com/cdn-cgi/image/width=600,height=600,fit=contain,format=auto/swappie-iphone-15-pro-max-natural-titanium-back.png'
-  },
-  {
-    id: 2,
-    name: 'iPhone 15',
-    color: 'Pink',
-    storage: '128GB',
-    price: '245,000',
-    imageUrl: 'https://assets.swappie.com/cdn-cgi/image/width=600,height=600,fit=contain,format=auto/swappie-iphone-15-pink-back.png'
-  },
-  {
-    id: 3,
-    name: 'iPhone 14 Pro',
-    color: 'Deep Purple',
-    storage: '256GB',
-    price: '325,000',
-    imageUrl: 'https://assets.swappie.com/cdn-cgi/image/width=600,height=600,fit=contain,format=auto/swappie-iphone-14-pro-deep-purple-back.png'
-  },
-  {
-    id: 4,
-    name: 'iPhone 13',
-    color: 'Midnight',
-    storage: '128GB',
-    price: '195,000',
-    imageUrl: 'https://assets.swappie.com/cdn-cgi/image/width=600,height=600,fit=contain,format=auto/swappie-iphone-13-midnight-back.png'
-  },
-  {
-    id: 5,
-    name: 'iPhone 15 Plus',
-    color: 'Blue',
-    storage: '256GB',
-    price: '295,000',
-    imageUrl: 'https://assets.swappie.com/cdn-cgi/image/width=600,height=600,fit=contain,format=auto/swappie-iphone-15-plus-blue-back.png'
-  },
-  {
-    id: 6,
-    name: 'iPhone SE (3rd gen)',
-    color: 'Starlight',
-    storage: '64GB',
-    price: '145,000',
-    imageUrl: 'https://assets.swappie.com/cdn-cgi/image/width=600,height=600,fit=contain,format=auto/swappie-iphone-se-2022-starlight-back.png'
-  },
-  {
-    id: 7,
-    name: 'iPhone 14',
-    color: 'Product Red',
-    storage: '128GB',
-    price: '225,000',
-    imageUrl: 'https://assets.swappie.com/cdn-cgi/image/width=600,height=600,fit=contain,format=auto/swappie-iphone-14-productred-back.png'
-  },
-  {
-    id: 8,
-    name: 'iPhone 13 mini',
-    color: 'Pink',
-    storage: '128GB',
-    price: '175,000',
-    imageUrl: 'https://assets.swappie.com/cdn-cgi/image/width=600,height=600,fit=contain,format=auto/swappie-iphone-13-mini-pink-back.png'
-  }
+  { id: 1, name: "iPhone 15 Pro Max", price: "Rs. 395,000", imageUrl: "https://assets.swappie.com/cdn-cgi/image/width=600,height=600,fit=contain,format=auto/swappie-iphone-15-pro-max-natural-titanium-back.png" },
+  { id: 2, name: "iPhone 15 Pro", price: "Rs. 345,000", imageUrl: "https://assets.swappie.com/cdn-cgi/image/width=600,height=600,fit=contain,format=auto/swappie-iphone-15-pro-blue-titanium-back.png" },
+  { id: 3, name: "iPhone 15", price: "Rs. 285,000", imageUrl: "https://assets.swappie.com/cdn-cgi/image/width=600,height=600,fit=contain,format=auto/swappie-iphone-15-pink-back.png" },
+  { id: 4, name: "iPhone 14 Pro Max", price: "Rs. 315,000", imageUrl: "https://assets.swappie.com/cdn-cgi/image/width=600,height=600,fit=contain,format=auto/swappie-iphone-14-pro-max-deep-purple-back.png" },
+  { id: 5, name: "iPhone 14 Pro", price: "Rs. 275,000", imageUrl: "https://assets.swappie.com/cdn-cgi/image/width=600,height=600,fit=contain,format=auto/swappie-iphone-14-pro-space-black-back.png" },
+  { id: 6, name: "iPhone 14", price: "Rs. 225,000", imageUrl: "https://assets.swappie.com/cdn-cgi/image/width=600,height=600,fit=contain,format=auto/swappie-iphone-14-productred-back.png" },
+  { id: 7, name: "iPhone 13 Pro Max", price: "Rs. 255,000", imageUrl: "https://assets.swappie.com/cdn-cgi/image/width=600,height=600,fit=contain,format=auto/swappie-iphone-13-pro-max-sierra-blue-back.png" },
+  { id: 8, name: "iPhone 13", price: "Rs. 185,000", imageUrl: "https://assets.swappie.com/cdn-cgi/image/width=600,height=600,fit=contain,format=auto/swappie-iphone-13-midnight-back.png" },
+  { id: 9, name: "iPhone 12 Pro", price: "Rs. 165,000", imageUrl: "https://assets.swappie.com/cdn-cgi/image/width=600,height=600,fit=contain,format=auto/swappie-iphone-12-pro-pacific-blue-back.png" },
+  { id: 10, name: "iPhone SE (3rd Gen)", price: "Rs. 125,000", imageUrl: "https://assets.swappie.com/cdn-cgi/image/width=600,height=600,fit=contain,format=auto/swappie-iphone-se-2022-starlight-back.png" }
 ];
 
 function App() {
@@ -229,9 +175,8 @@ function App() {
                         </button>
                       </div>
                       <div className="space-y-2">
-                        <p className="text-xs text-zinc-500 uppercase tracking-wide">{phone.color} • {phone.storage}</p>
                         <h3 className="text-lg font-semibold text-white">{phone.name}</h3>
-                        <p className="text-xl font-bold text-white">Rs. {phone.price}</p>
+                        <p className="text-xl font-bold text-white">{phone.price}</p>
                         <button className="w-full mt-3 py-3 rounded-xl bg-white text-black font-semibold text-sm uppercase tracking-wider hover:bg-zinc-200 transition-colors">
                           Add to Cart
                         </button>
