@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { Canvas } from '@react-three/fiber';
 import { Link } from 'react-router-dom';
 import PhoneModels from './PhoneModels';
-import { motion, useInView } from 'framer-motion';
+import { motion } from 'framer-motion';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -68,7 +68,8 @@ export default function Hero() {
           trigger: containerRef.current,
           start: "top top",
           end: "bottom top",
-          scrub: 1,
+          scrub: 2,
+          anticipatePin: 1,
           onUpdate: (self) => {
             setScrollProgress(self.progress);
           }
@@ -76,14 +77,14 @@ export default function Hero() {
       });
 
       tl.to(textRef.current, {
-        yPercent: -100,
+        yPercent: -80,
         opacity: 0,
-        ease: "none",
+        ease: "power2.inOut",
       }, 0);
 
       tl.to(canvasRef.current, {
-        yPercent: 30,
-        scale: 0.85,
+        yPercent: 20,
+        scale: 0.9,
         opacity: 0,
         ease: "power2.inOut",
       }, 0);
@@ -189,8 +190,8 @@ export default function Hero() {
 
       <div ref={canvasRef} className="absolute inset-0 z-30">
         <Canvas camera={{ position: [0, 0, 7], fov: 40 }} dpr={[1, 2]}>
-          <PhoneModels 
-            iphoneRef={iphoneGroupRef} 
+          <PhoneModels
+            iphoneRef={iphoneGroupRef}
             samsungRef={samsungGroupRef}
           />
         </Canvas>

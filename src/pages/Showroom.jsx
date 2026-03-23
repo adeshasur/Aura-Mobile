@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 
 const allPhones = [
@@ -28,7 +28,7 @@ export default function Showroom({ addToCart, isCartOpen, setIsCartOpen, cartCou
   const actualCartCount = cartCount !== undefined ? cartCount : cartItems.length;
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedBrand, setSelectedBrand] = useState('All');
-  const [hoveredId, setHoveredId] = useState(null);
+
 
   const filteredPhones = allPhones.filter(phone => {
     const matchesBrand = selectedBrand === 'All' || phone.brand === selectedBrand;
@@ -37,22 +37,13 @@ export default function Showroom({ addToCart, isCartOpen, setIsCartOpen, cartCou
     return matchesBrand && matchesSearch;
   });
 
-  const getBrandColor = (brand) => {
-    const colors = {
-      Apple: 'from-zinc-600 to-zinc-800',
-      Samsung: 'from-blue-600 to-blue-800',
-      Google: 'from-green-600 to-green-800',
-      OnePlus: 'from-red-600 to-red-800',
-      Xiaomi: 'from-orange-600 to-orange-800',
-    };
-    return colors[brand] || 'from-zinc-600 to-zinc-800';
-  };
+
 
   return (
     <div className="min-h-screen bg-black text-white">
       <Navbar cartCount={actualCartCount} isCartOpen={isCartOpen} setIsCartOpen={setIsCartOpen} />
 
-      <div className="pt-24 pb-8 px-6">
+      <div className="pt-24 pb-8 px-6 flex flex-col items-center gap-4">
             <div className="relative w-full md:w-96">
               <svg className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-zinc-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
@@ -66,7 +57,7 @@ export default function Showroom({ addToCart, isCartOpen, setIsCartOpen, cartCou
               />
             </div>
 
-            <div className="flex flex-wrap gap-2">
+            <div className="flex flex-wrap justify-center gap-2">
               {brands.map((brand) => (
                 <button
                   key={brand}
@@ -84,14 +75,12 @@ export default function Showroom({ addToCart, isCartOpen, setIsCartOpen, cartCou
           </div>
 
       <div className="max-w-7xl mx-auto px-6 py-12">
-        <div className="flex items-center justify-between mb-8">
-          <div>
-            <p className="text-xs uppercase tracking-[0.3em] text-zinc-600 mb-1">Browse Collection</p>
-            <h2 className="text-3xl md:text-4xl font-bold text-white">
-              {selectedBrand === 'All' ? 'All Phones' : selectedBrand}
-              <span className="text-zinc-500 ml-3">({filteredPhones.length})</span>
-            </h2>
-          </div>
+        <div className="flex flex-col items-center text-center mb-8">
+          <p className="text-xs uppercase tracking-[0.3em] text-zinc-600 mb-1">Browse Collection</p>
+          <h2 className="text-3xl md:text-4xl font-bold text-white">
+            {selectedBrand === 'All' ? 'All Phones' : selectedBrand}
+            <span className="text-zinc-500 ml-3">({filteredPhones.length})</span>
+          </h2>
         </div>
 
         {filteredPhones.length === 0 ? (
@@ -108,8 +97,6 @@ export default function Showroom({ addToCart, isCartOpen, setIsCartOpen, cartCou
               <div
                 key={phone.id}
                 className="group relative bg-zinc-900/50 border border-white/10 rounded-2xl p-4 hover:border-white/20 hover:shadow-[0_0_40px_rgba(255,255,255,0.1)] transition-all duration-500"
-                onMouseEnter={() => setHoveredId(phone.id)}
-                onMouseLeave={() => setHoveredId(null)}
               >
                 <div className="relative z-0 overflow-hidden rounded-xl">
                   <span className={`absolute top-2 left-2 z-[50] px-2 py-1 text-[10px] font-bold uppercase tracking-tighter bg-zinc-900/90 text-white`}>

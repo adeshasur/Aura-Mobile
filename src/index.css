@@ -9,7 +9,7 @@
 }
 
 html {
-  scroll-behavior: smooth;
+  overflow-y: scroll; /* Always reserve scrollbar space — prevents layout shift on page navigation */
 }
 
 body {
@@ -22,6 +22,8 @@ body {
   background-attachment: fixed;
   color: var(--color-foreground);
   overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 #root {
