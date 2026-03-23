@@ -48,7 +48,7 @@ function HomePage() {
     <>
       <div className="min-h-screen bg-[#000000] text-[#f6efe7] selection:bg-white/20 selection:text-white font-sans cursor-default">
         {/* Navigation */}
-        <nav className="fixed top-0 left-0 right-0 z-50 border-b border-white/5 bg-black/50 backdrop-blur-xl">
+        <nav className="fixed top-0 left-0 w-full z-[100] bg-black/80 backdrop-blur-xl border-b border-white/5">
           <div className="max-w-[1400px] mx-auto px-6 py-4 md:px-12 flex items-center justify-between">
             
             {/* Logo */}

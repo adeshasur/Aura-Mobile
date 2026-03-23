@@ -47,7 +47,7 @@ export default function Showroom() {
 
   return (
     <div className="min-h-screen bg-black text-white">
-      <div className="sticky top-0 z-50 bg-black/50 backdrop-blur-md border-b border-white/10">
+      <div className="fixed top-0 left-0 w-full z-[100] bg-black/80 backdrop-blur-xl border-b border-white/10">
         <div className="max-w-7xl mx-auto px-6 py-4">
           <div className="flex items-center justify-between mb-4">
             <Link to="/" className="flex items-center gap-3 group">

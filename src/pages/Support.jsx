@@ -38,7 +38,7 @@ export default function Support() {
       </div>
 
       <div className="relative z-10">
-        <div className="sticky top-0 z-50 bg-black/60 backdrop-blur-xl border-b border-white/5">
+        <div className="fixed top-0 left-0 w-full z-[100] bg-black/80 backdrop-blur-xl border-b border-white/5">
           <div className="max-w-7xl mx-auto px-6 py-4">
             <div className="flex items-center justify-between">
               <Link to="/" className="flex items-center gap-3 group cursor-pointer">
