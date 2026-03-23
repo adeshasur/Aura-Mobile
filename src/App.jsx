@@ -15,7 +15,7 @@ const applePhones = [
   { id: 3, name: "iPhone 15", price: "Rs. 285,000", imageUrl: "https://assets.swappie.com/cdn-cgi/image/width=600,height=600,fit=contain,format=auto/swappie-iphone-15-pink-back.png" },
   { id: 4, name: "iPhone 14 Pro Max", price: "Rs. 315,000", imageUrl: "https://assets.swappie.com/cdn-cgi/image/width=600,height=600,fit=contain,format=auto/swappie-iphone-14-pro-max-deep-purple-back.png" },
   { id: 5, name: "iPhone 14 Pro", price: "Rs. 275,000", imageUrl: "https://assets.swappie.com/cdn-cgi/image/width=600,height=600,fit=contain,format=auto/swappie-iphone-14-pro-space-black-back.png" },
-  { id: 6, name: "iPhone 14", price: "Rs. 225,000", imageUrl: "https://assets.swappie.com/cdn-cgi/image/width=600,height=600,fit=contain,format=auto/swappie-iphone-14-productred-back.png" },
+  { id: 6, name: "iPhone 14", price: "Rs. 225,000", imageUrl: "https://assets.swappie.com/cdn-cgi/image/width=600,height=600,fit=contain,format=auto/swappie-iphone-14-midnight-back.png" },
   { id: 7, name: "iPhone 13 Pro Max", price: "Rs. 255,000", imageUrl: "https://assets.swappie.com/cdn-cgi/image/width=600,height=600,fit=contain,format=auto/swappie-iphone-13-pro-max-sierra-blue-back.png" },
   { id: 8, name: "iPhone 13", price: "Rs. 185,000", imageUrl: "https://assets.swappie.com/cdn-cgi/image/width=600,height=600,fit=contain,format=auto/swappie-iphone-13-midnight-back.png" },
   { id: 9, name: "iPhone 12 Pro", price: "Rs. 165,000", imageUrl: "https://assets.swappie.com/cdn-cgi/image/width=600,height=600,fit=contain,format=auto/swappie-iphone-12-pro-pacific-blue-back.png" },
@@ -174,14 +174,14 @@ function App() {
               >
                 {applePhones.map((phone) => (
                   <SwiperSlide key={phone.id}>
-                    <div className="group relative bg-zinc-900/50 border border-white/10 rounded-2xl p-5 hover:border-white/20 hover:shadow-[0_0_30px_rgba(255,255,255,0.05)] transition-all duration-500 h-full">
-                      <div className="relative h-56 flex items-center justify-center mb-4 overflow-hidden">
+                    <div className="group relative bg-zinc-900/50 border border-white/10 rounded-2xl p-4 hover:border-white/20 hover:shadow-[0_0_30px_rgba(255,255,255,0.05)] transition-all duration-500 h-full">
+                      <div className="relative h-64 flex items-center justify-center mb-4 overflow-hidden rounded-xl">
                         <img
                           src={phone.imageUrl}
                           alt={phone.name}
-                          className="h-44 w-auto object-contain group-hover:scale-105 transition-transform duration-500"
+                          className="h-full w-full object-contain transition-transform duration-500 ease-in-out group-hover:scale-110"
                         />
-                        <button className="absolute top-0 right-0 p-2 rounded-full bg-black/50 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity">
+                        <button className="absolute top-2 right-2 p-2 rounded-full bg-black/50 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity">
                           <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
                           </svg>
@@ -248,14 +248,14 @@ function App() {
               >
                 {samsungPhones.map((phone) => (
                   <SwiperSlide key={phone.id}>
-                    <div className="group relative bg-zinc-900/50 border border-white/10 rounded-2xl p-5 hover:border-white/20 hover:shadow-[0_0_30px_rgba(255,255,255,0.05)] transition-all duration-500 h-full">
-                      <div className="relative h-56 flex items-center justify-center mb-4 overflow-hidden">
+                    <div className="group relative bg-zinc-900/50 border border-white/10 rounded-2xl p-4 hover:border-white/20 hover:shadow-[0_0_30px_rgba(255,255,255,0.05)] transition-all duration-500 h-full">
+                      <div className="relative h-64 flex items-center justify-center mb-4 overflow-hidden rounded-xl">
                         <img
                           src={phone.imageUrl}
                           alt={phone.name}
-                          className="h-44 w-auto object-contain group-hover:scale-105 transition-transform duration-500"
+                          className="h-full w-full object-contain transition-transform duration-500 ease-in-out group-hover:scale-110"
                         />
-                        <button className="absolute top-0 right-0 p-2 rounded-full bg-black/50 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity">
+                        <button className="absolute top-2 right-2 p-2 rounded-full bg-black/50 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity">
                           <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
                           </svg>
