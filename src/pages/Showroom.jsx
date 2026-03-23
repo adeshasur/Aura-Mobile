@@ -2,26 +2,26 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
 const allPhones = [
-  { id: 1, brand: 'Apple', name: "iPhone 15 Pro Max", price: "Rs. 395,000", imageUrl: "https://placehold.co/600x600/1a1a1a/fff?text=iPhone+15+Pro+Max" },
-  { id: 2, brand: 'Apple', name: "iPhone 15 Pro", price: "Rs. 345,000", imageUrl: "https://placehold.co/600x600/1a1a1a/fff?text=iPhone+15+Pro" },
-  { id: 3, brand: 'Apple', name: "iPhone 15", price: "Rs. 285,000", imageUrl: "https://placehold.co/600x600/1a1a1a/fff?text=iPhone+15" },
-  { id: 4, brand: 'Apple', name: "iPhone 14 Pro Max", price: "Rs. 315,000", imageUrl: "https://placehold.co/600x600/1a1a1a/fff?text=iPhone+14+Pro+Max" },
-  { id: 5, brand: 'Apple', name: "iPhone 14 Pro", price: "Rs. 275,000", imageUrl: "https://placehold.co/600x600/1a1a1a/fff?text=iPhone+14+Pro" },
-  { id: 6, brand: 'Samsung', name: "Galaxy S24 Ultra", price: "Rs. 395,000", imageUrl: "https://placehold.co/600x600/1a1a2a/fff?text=Galaxy+S24+Ultra" },
-  { id: 7, brand: 'Samsung', name: "Galaxy S24+", price: "Rs. 295,000", imageUrl: "https://placehold.co/600x600/1a1a2a/fff?text=Galaxy+S24%2B" },
-  { id: 8, brand: 'Samsung', name: "Galaxy Z Fold 5", price: "Rs. 495,000", imageUrl: "https://placehold.co/600x600/1a1a2a/fff?text=Galaxy+Z+Fold+5" },
-  { id: 9, brand: 'Samsung', name: "Galaxy Z Flip 5", price: "Rs. 295,000", imageUrl: "https://placehold.co/600x600/1a1a2a/fff?text=Galaxy+Z+Flip+5" },
-  { id: 10, brand: 'Samsung', name: "Galaxy A55 5G", price: "Rs. 145,000", imageUrl: "https://placehold.co/600x600/1a1a2a/fff?text=Galaxy+A55+5G" },
-  { id: 11, brand: 'Google', name: "Pixel 8 Pro", price: "Rs. 275,000", imageUrl: "https://placehold.co/600x600/1a2a1a/fff?text=Pixel+8+Pro" },
-  { id: 12, brand: 'Google', name: "Pixel 8", price: "Rs. 195,000", imageUrl: "https://placehold.co/600x600/1a2a1a/fff?text=Pixel+8" },
-  { id: 13, brand: 'OnePlus', name: "OnePlus 12", price: "Rs. 225,000", imageUrl: "https://placehold.co/600x600/2a1a1a/fff?text=OnePlus+12" },
-  { id: 14, brand: 'OnePlus', name: "OnePlus 12R", price: "Rs. 175,000", imageUrl: "https://placehold.co/600x600/2a1a1a/fff?text=OnePlus+12R" },
-  { id: 15, brand: 'Xiaomi', name: "Xiaomi 14 Ultra", price: "Rs. 285,000", imageUrl: "https://placehold.co/600x600/2a2a1a/fff?text=Xiaomi+14+Ultra" },
-  { id: 16, brand: 'Xiaomi', name: "Xiaomi 14 Pro", price: "Rs. 245,000", imageUrl: "https://placehold.co/600x600/2a2a1a/fff?text=Xiaomi+14+Pro" },
-  { id: 17, brand: 'Oppo', name: "Find X7 Pro", price: "Rs. 265,000", imageUrl: "https://placehold.co/600x600/1a1a2a/fff?text=Find+X7+Pro" },
-  { id: 18, brand: 'Oppo', name: "Reno 11 Pro", price: "Rs. 145,000", imageUrl: "https://placehold.co/600x600/1a1a2a/fff?text=Reno+11+Pro" },
-  { id: 19, brand: 'Vivo', name: "X100 Pro", price: "Rs. 255,000", imageUrl: "https://placehold.co/600x600/2a1a2a/fff?text=X100+Pro" },
-  { id: 20, brand: 'Vivo', name: "V30 Pro", price: "Rs. 135,000", imageUrl: "https://placehold.co/600x600/2a1a2a/fff?text=V30+Pro" },
+  { id: 1, brand: 'Apple', name: "iPhone 15 Pro Max", price: "Rs. 395,000", imageUrl: "/phones/iphone-15-pro-max.png" },
+  { id: 2, brand: 'Apple', name: "iPhone 15 Pro", price: "Rs. 345,000", imageUrl: "/phones/iphone-15-pro.png" },
+  { id: 3, brand: 'Apple', name: "iPhone 15", price: "Rs. 285,000", imageUrl: "/phones/iphone-15.png" },
+  { id: 4, brand: 'Apple', name: "iPhone 14 Pro Max", price: "Rs. 315,000", imageUrl: "/phones/iphone-14-pro-max.png" },
+  { id: 5, brand: 'Apple', name: "iPhone 14 Pro", price: "Rs. 275,000", imageUrl: "/phones/iphone-14-pro.png" },
+  { id: 6, brand: 'Samsung', name: "Galaxy S24 Ultra", price: "Rs. 395,000", imageUrl: "/phones/galaxy-s24-ultra.png" },
+  { id: 7, brand: 'Samsung', name: "Galaxy S24+", price: "Rs. 295,000", imageUrl: "/phones/galaxy-s24-plus.png" },
+  { id: 8, brand: 'Samsung', name: "Galaxy Z Fold 5", price: "Rs. 495,000", imageUrl: "/phones/galaxy-z-fold-5.png" },
+  { id: 9, brand: 'Samsung', name: "Galaxy Z Flip 5", price: "Rs. 295,000", imageUrl: "/phones/galaxy-z-flip-5.png" },
+  { id: 10, brand: 'Samsung', name: "Galaxy A55 5G", price: "Rs. 145,000", imageUrl: "/phones/galaxy-a55-5g.png" },
+  { id: 11, brand: 'Google', name: "Pixel 8 Pro", price: "Rs. 275,000", imageUrl: "/phones/pixel-8-pro.png" },
+  { id: 12, brand: 'Google', name: "Pixel 8", price: "Rs. 195,000", imageUrl: "/phones/pixel-8.png" },
+  { id: 13, brand: 'OnePlus', name: "OnePlus 12", price: "Rs. 225,000", imageUrl: "/phones/oneplus-12.png" },
+  { id: 14, brand: 'OnePlus', name: "OnePlus 12R", price: "Rs. 175,000", imageUrl: "/phones/oneplus-12r.png" },
+  { id: 15, brand: 'Xiaomi', name: "Xiaomi 14 Ultra", price: "Rs. 285,000", imageUrl: "/phones/xiaomi-14-ultra.png" },
+  { id: 16, brand: 'Xiaomi', name: "Xiaomi 14 Pro", price: "Rs. 245,000", imageUrl: "/phones/xiaomi-14-pro.png" },
+  { id: 17, brand: 'Oppo', name: "Find X7 Pro", price: "Rs. 265,000", imageUrl: "/phones/oppo-find-x7-pro.png" },
+  { id: 18, brand: 'Oppo', name: "Reno 11 Pro", price: "Rs. 145,000", imageUrl: "/phones/oppo-reno-11-pro.png" },
+  { id: 19, brand: 'Vivo', name: "X100 Pro", price: "Rs. 255,000", imageUrl: "/phones/vivo-x100-pro.png" },
+  { id: 20, brand: 'Vivo', name: "V30 Pro", price: "Rs. 135,000", imageUrl: "/phones/vivo-v30-pro.png" },
 ];
 
 const brands = ['All', 'Apple', 'Samsung', 'Google', 'OnePlus', 'Xiaomi', 'Oppo', 'Vivo'];
@@ -133,7 +133,7 @@ export default function Showroom() {
                   <img
                     src={phone.imageUrl}
                     alt={phone.name}
-                    className="h-64 w-full object-contain mb-4 transition-transform duration-500 ease-out group-hover:scale-110"
+                    className="h-64 w-full object-contain mb-6 transition-transform duration-500 group-hover:scale-110"
                   />
                   <button className="absolute top-3 right-3 p-2.5 rounded-full bg-black/60 backdrop-blur-md border border-white/10 opacity-0 group-hover:opacity-100 transition-all duration-300 hover:bg-black/80 hover:scale-110">
                     <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">

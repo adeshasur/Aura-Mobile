@@ -12,29 +12,29 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 
 const applePhones = [
-  { id: 1, name: "iPhone 15 Pro Max", price: "Rs. 395,000", imageUrl: "https://placehold.co/600x600/1a1a1a/fff?text=iPhone+15+Pro+Max" },
-  { id: 2, name: "iPhone 15 Pro", price: "Rs. 345,000", imageUrl: "https://placehold.co/600x600/1a1a1a/fff?text=iPhone+15+Pro" },
-  { id: 3, name: "iPhone 15", price: "Rs. 285,000", imageUrl: "https://placehold.co/600x600/1a1a1a/fff?text=iPhone+15" },
-  { id: 4, name: "iPhone 14 Pro Max", price: "Rs. 315,000", imageUrl: "https://placehold.co/600x600/1a1a1a/fff?text=iPhone+14+Pro+Max" },
-  { id: 5, name: "iPhone 14 Pro", price: "Rs. 275,000", imageUrl: "https://placehold.co/600x600/1a1a1a/fff?text=iPhone+14+Pro" },
-  { id: 6, name: "iPhone 14", price: "Rs. 225,000", imageUrl: "https://placehold.co/600x600/1a1a1a/fff?text=iPhone+14" },
-  { id: 7, name: "iPhone 13 Pro Max", price: "Rs. 255,000", imageUrl: "https://placehold.co/600x600/1a1a1a/fff?text=iPhone+13+Pro+Max" },
-  { id: 8, name: "iPhone 13", price: "Rs. 185,000", imageUrl: "https://placehold.co/600x600/1a1a1a/fff?text=iPhone+13" },
-  { id: 9, name: "iPhone 12 Pro", price: "Rs. 165,000", imageUrl: "https://placehold.co/600x600/1a1a1a/fff?text=iPhone+12+Pro" },
-  { id: 10, name: "iPhone SE (3rd Gen)", price: "Rs. 125,000", imageUrl: "https://placehold.co/600x600/1a1a1a/fff?text=iPhone+SE" }
+  { id: 1, name: "iPhone 15 Pro Max", price: "Rs. 395,000", imageUrl: "/phones/iphone-15-pro-max.png" },
+  { id: 2, name: "iPhone 15 Pro", price: "Rs. 345,000", imageUrl: "/phones/iphone-15-pro.png" },
+  { id: 3, name: "iPhone 15", price: "Rs. 285,000", imageUrl: "/phones/iphone-15.png" },
+  { id: 4, name: "iPhone 14 Pro Max", price: "Rs. 315,000", imageUrl: "/phones/iphone-14-pro-max.png" },
+  { id: 5, name: "iPhone 14 Pro", price: "Rs. 275,000", imageUrl: "/phones/iphone-14-pro.png" },
+  { id: 6, name: "iPhone 14", price: "Rs. 225,000", imageUrl: "/phones/iphone-14.png" },
+  { id: 7, name: "iPhone 13 Pro Max", price: "Rs. 255,000", imageUrl: "/phones/iphone-13-pro-max.png" },
+  { id: 8, name: "iPhone 13", price: "Rs. 185,000", imageUrl: "/phones/iphone-13.png" },
+  { id: 9, name: "iPhone 12 Pro", price: "Rs. 165,000", imageUrl: "/phones/iphone-12-pro.png" },
+  { id: 10, name: "iPhone SE (3rd Gen)", price: "Rs. 125,000", imageUrl: "/phones/iphone-se-3rd-gen.png" }
 ];
 
 const samsungPhones = [
-  { id: 1, name: "Galaxy S24 Ultra", price: "Rs. 395,000", imageUrl: "https://placehold.co/600x600/1a1a2a/fff?text=Galaxy+S24+Ultra" },
-  { id: 2, name: "Galaxy S24+", price: "Rs. 295,000", imageUrl: "https://placehold.co/600x600/1a1a2a/fff?text=Galaxy+S24%2B" },
-  { id: 3, name: "Galaxy Z Fold 5", price: "Rs. 495,000", imageUrl: "https://placehold.co/600x600/1a1a2a/fff?text=Galaxy+Z+Fold+5" },
-  { id: 4, name: "Galaxy Z Flip 5", price: "Rs. 295,000", imageUrl: "https://placehold.co/600x600/1a1a2a/fff?text=Galaxy+Z+Flip+5" },
-  { id: 5, name: "Galaxy S23 Ultra", price: "Rs. 345,000", imageUrl: "https://placehold.co/600x600/1a1a2a/fff?text=Galaxy+S23+Ultra" },
-  { id: 6, name: "Galaxy S23+", price: "Rs. 265,000", imageUrl: "https://placehold.co/600x600/1a1a2a/fff?text=Galaxy+S23%2B" },
-  { id: 7, name: "Galaxy A55 5G", price: "Rs. 145,000", imageUrl: "https://placehold.co/600x600/1a1a2a/fff?text=Galaxy+A55+5G" }, 
-  { id: 8, name: "Galaxy A35 5G", price: "Rs. 115,000", imageUrl: "https://placehold.co/600x600/1a1a2a/fff?text=Galaxy+A35+5G" }, 
-  { id: 9, name: "Galaxy A25 5G", price: "Rs. 75,000", imageUrl: "https://placehold.co/600x600/1a1a2a/fff?text=Galaxy+A25+5G" }, 
-  { id: 10, name: "Galaxy A15 5G", price: "Rs. 55,000", imageUrl: "https://placehold.co/600x600/1a1a2a/fff?text=Galaxy+A15+5G" } 
+  { id: 1, name: "Galaxy S24 Ultra", price: "Rs. 395,000", imageUrl: "/phones/galaxy-s24-ultra.png" },
+  { id: 2, name: "Galaxy S24+", price: "Rs. 295,000", imageUrl: "/phones/galaxy-s24-plus.png" },
+  { id: 3, name: "Galaxy Z Fold 5", price: "Rs. 495,000", imageUrl: "/phones/galaxy-z-fold-5.png" },
+  { id: 4, name: "Galaxy Z Flip 5", price: "Rs. 295,000", imageUrl: "/phones/galaxy-z-flip-5.png" },
+  { id: 5, name: "Galaxy S23 Ultra", price: "Rs. 345,000", imageUrl: "/phones/galaxy-s23-ultra.png" },
+  { id: 6, name: "Galaxy S23+", price: "Rs. 265,000", imageUrl: "/phones/galaxy-s23-plus.png" },
+  { id: 7, name: "Galaxy A55 5G", price: "Rs. 145,000", imageUrl: "/phones/galaxy-a55-5g.png" }, 
+  { id: 8, name: "Galaxy A35 5G", price: "Rs. 115,000", imageUrl: "/phones/galaxy-a35-5g.png" }, 
+  { id: 9, name: "Galaxy A25 5G", price: "Rs. 75,000", imageUrl: "/phones/galaxy-a25-5g.png" }, 
+  { id: 10, name: "Galaxy A15 5G", price: "Rs. 55,000", imageUrl: "/phones/galaxy-a15-5g.png" } 
 ];
 
 function App() {
