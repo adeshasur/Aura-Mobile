@@ -111,27 +111,26 @@ export default function Showroom({ addToCart, isCartOpen, setIsCartOpen, cartCou
                 onMouseEnter={() => setHoveredId(phone.id)}
                 onMouseLeave={() => setHoveredId(null)}
               >
-                <div className={`absolute top-3 left-3 z-20 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-gradient-to-r ${getBrandColor(phone.brand)} text-white bg-opacity-90`}>
-                  {phone.brand}
-                </div>
-
-                <div className="relative overflow-hidden rounded-xl z-10">
+                <div className="relative overflow-hidden rounded-xl">
+                  <span className={`absolute top-2 left-2 z-20 px-2 py-1 text-[10px] font-bold uppercase tracking-wider bg-gradient-to-r ${getBrandColor(phone.brand)} text-white backdrop-blur-sm`}>
+                    {phone.brand}
+                  </span>
                   <img
                     src={phone.imageUrl}
                     alt={phone.name}
-                    className="h-64 w-full object-contain mb-6 transition-transform duration-500 group-hover:scale-110"
+                    className="h-64 w-full object-contain z-10 transition-transform duration-500 group-hover:scale-110"
                   />
-                  <button className="absolute top-3 right-3 p-2.5 rounded-full bg-black/60 backdrop-blur-md border border-white/10 opacity-0 group-hover:opacity-100 transition-all duration-300 hover:bg-black/80 hover:scale-110">
-                    <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <button className="absolute top-2 right-2 z-20 p-2 rounded-full bg-black/60 backdrop-blur-md border border-white/10 opacity-0 group-hover:opacity-100 transition-all duration-300 hover:bg-black/80 hover:scale-110">
+                    <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
                     </svg>
                   </button>
                 </div>
 
-                <div className="space-y-2">
+                <div className="pt-4 space-y-2">
                   <h3 className="text-lg font-semibold text-white truncate">{phone.name}</h3>
                   <p className="text-xl font-bold text-white">{phone.price}</p>
-                  <button onClick={() => addToCart(phone)} className="w-full mt-2 py-3 rounded-xl bg-white text-black font-semibold text-sm uppercase tracking-wider hover:bg-zinc-200 hover:shadow-lg hover:shadow-white/10 transition-all duration-300">
+                  <button onClick={() => addToCart(phone)} className="w-full py-3 rounded-xl bg-white text-black font-semibold text-sm uppercase tracking-wider hover:bg-zinc-200 hover:shadow-lg hover:shadow-white/10 transition-all duration-300">
                     Add to Cart
                   </button>
                 </div>

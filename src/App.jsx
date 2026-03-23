@@ -159,19 +159,21 @@ function HomePage({ cart, addToCart, isCartOpen, setIsCartOpen }) {
                 {applePhones.map((phone) => (
                   <SwiperSlide key={phone.id}>
                     <div className="group relative bg-zinc-900/50 border border-white/10 rounded-2xl p-4 hover:border-white/20 hover:shadow-[0_0_40px_rgba(255,255,255,0.1)] transition-all duration-500 h-full">
-                      <div className="relative h-64 flex items-center justify-center mb-4 overflow-hidden rounded-xl bg-gradient-to-b from-zinc-800/30 to-transparent">
-                        <span className="absolute top-3 left-3 z-20 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-gradient-to-r from-zinc-600 to-zinc-800 text-white bg-opacity-90">Apple</span>
-                        <img src={phone.imageUrl} alt={phone.name} className="h-full w-full object-contain transition-transform duration-500 ease-out group-hover:scale-110 z-10" />
-                        <button className="absolute top-3 right-3 z-20 p-2.5 rounded-full bg-black/60 backdrop-blur-md border border-white/10 opacity-0 group-hover:opacity-100 transition-all duration-300 hover:bg-black/80 hover:scale-110">
-                          <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <div className="relative overflow-hidden rounded-xl">
+                        <span className="absolute top-2 left-2 z-20 px-2 py-1 text-[10px] font-bold uppercase tracking-wider bg-gradient-to-r from-zinc-600 to-zinc-800 text-white backdrop-blur-sm">Apple</span>
+                        <div className="h-64 flex items-center justify-center bg-gradient-to-b from-zinc-800/30 to-transparent">
+                          <img src={phone.imageUrl} alt={phone.name} className="h-full w-full object-contain z-10 transition-transform duration-500 ease-out group-hover:scale-110" />
+                        </div>
+                        <button className="absolute top-2 right-2 z-20 p-2 rounded-full bg-black/60 backdrop-blur-md border border-white/10 opacity-0 group-hover:opacity-100 transition-all duration-300 hover:bg-black/80 hover:scale-110">
+                          <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
                           </svg>
                         </button>
                       </div>
-                      <div className="space-y-2">
+                      <div className="pt-4 space-y-2">
                         <h3 className="text-lg font-semibold text-white">{phone.name}</h3>
                         <p className="text-xl font-bold text-white">{phone.price}</p>
-                        <button onClick={() => addToCart(phone)} className="w-full mt-4 py-3.5 rounded-xl bg-white text-black font-semibold text-sm uppercase tracking-wider hover:bg-zinc-200 hover:shadow-lg hover:shadow-white/10 transition-all duration-300">
+                        <button onClick={() => addToCart(phone)} className="w-full py-3 rounded-xl bg-white text-black font-semibold text-sm uppercase tracking-wider hover:bg-zinc-200 hover:shadow-lg hover:shadow-white/10 transition-all duration-300">
                           Add to Cart
                         </button>
                       </div>
@@ -219,18 +221,20 @@ function HomePage({ cart, addToCart, isCartOpen, setIsCartOpen }) {
                   <SwiperSlide key={phone.id}>
                     <div className="group relative bg-zinc-900/50 border border-white/10 rounded-2xl p-4 hover:border-white/20 hover:shadow-[0_0_40px_rgba(255,255,255,0.1)] transition-all duration-500 h-full">
                       <div className="relative overflow-hidden rounded-xl">
-                        <span className="absolute top-3 left-3 z-20 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-gradient-to-r from-blue-600 to-blue-800 text-white bg-opacity-90">Samsung</span>
-                        <img src={phone.imageUrl} alt={phone.name} className="h-64 w-full object-contain mb-6 transition-transform duration-500 ease-in-out group-hover:scale-110 z-10" />
-                        <button className="absolute top-3 right-3 z-20 p-2.5 rounded-full bg-black/60 backdrop-blur-md border border-white/10 opacity-0 group-hover:opacity-100 transition-all duration-300 hover:bg-black/80 hover:scale-110">
-                          <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <span className="absolute top-2 left-2 z-20 px-2 py-1 text-[10px] font-bold uppercase tracking-wider bg-gradient-to-r from-blue-600 to-blue-800 text-white backdrop-blur-sm">Samsung</span>
+                        <div className="h-64 flex items-center justify-center bg-gradient-to-b from-zinc-800/30 to-transparent">
+                          <img src={phone.imageUrl} alt={phone.name} className="h-full w-full object-contain z-10 transition-transform duration-500 ease-in-out group-hover:scale-110" />
+                        </div>
+                        <button className="absolute top-2 right-2 z-20 p-2 rounded-full bg-black/60 backdrop-blur-md border border-white/10 opacity-0 group-hover:opacity-100 transition-all duration-300 hover:bg-black/80 hover:scale-110">
+                          <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
                           </svg>
                         </button>
                       </div>
-                      <div className="space-y-2">
+                      <div className="pt-4 space-y-2">
                         <h3 className="text-lg font-semibold text-white">{phone.name}</h3>
                         <p className="text-xl font-bold text-white">{phone.price}</p>
-                        <button onClick={() => addToCart(phone)} className="w-full mt-4 py-3.5 rounded-xl bg-white text-black font-semibold text-sm uppercase tracking-wider hover:bg-zinc-200 hover:shadow-lg hover:shadow-white/10 transition-all duration-300">
+                        <button onClick={() => addToCart(phone)} className="w-full py-3 rounded-xl bg-white text-black font-semibold text-sm uppercase tracking-wider hover:bg-zinc-200 hover:shadow-lg hover:shadow-white/10 transition-all duration-300">
                           Add to Cart
                         </button>
                       </div>
