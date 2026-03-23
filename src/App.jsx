@@ -1,14 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import Hero from './components/Hero';
-import Navbar from './components/Navbar';
+import Navbar, { Toast } from './components/Navbar';
 import BrandsMarquee from './components/BrandsMarquee';
-import BrandVault from './components/BrandVault';
 import Footer from './components/Footer';
-import Preloader from './components/Preloader';
 import Showroom from './pages/Showroom';
 import Support from './pages/Support';
-import { ShoppingBag } from 'lucide-react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Navigation } from 'swiper/modules';
 import 'swiper/css';
@@ -32,34 +29,48 @@ const samsungPhones = [
 ];
 
 function App() {
+  const [cart, setCart] = useState(() => {
+    const saved = localStorage.getItem('aura-cart');
+    return saved ? JSON.parse(saved) : [];
+  });
+  const [toast, setToast] = useState({ visible: false, message: '' });
+
+  useEffect(() => {
+    localStorage.setItem('aura-cart', JSON.stringify(cart));
+  }, [cart]);
+
+  const addToCart = (phone) => {
+    setCart(prev => [...prev, phone]);
+    setToast({ visible: true, message: `${phone.name} added to cart` });
+    setTimeout(() => setToast({ visible: false, message: '' }), 2000);
+  };
+
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/showroom" element={<Showroom />} />
+        <Route path="/" element={<HomePage cart={cart} addToCart={addToCart} />} />
+        <Route path="/showroom" element={<Showroom addToCart={addToCart} />} />
         <Route path="/support" element={<Support />} />
       </Routes>
+      <Toast message={toast.message} isVisible={toast.visible} />
     </Router>
   );
 }
 
-function HomePage() {
+function HomePage({ cart, addToCart }) {
   return (
     <>
       <div className="min-h-screen bg-[#000000] text-[#f6efe7] selection:bg-white/20 selection:text-white font-sans cursor-default">
-        <Navbar />
+        <Navbar cartCount={cart.length} />
 
         <main>
-          {/* 1. Hero Section (The Ultimate Face-Off) */}
           <Hero />
 
-          {/* 2. Brand Showcase Section */}
           <section className="relative py-16 bg-black border-t border-white/5">
             <div className="max-w-7xl mx-auto px-6">
               <p className="text-[10px] uppercase tracking-[0.5em] text-zinc-600 text-center mb-10">
                 Featured Brands
               </p>
-              
               <div className="relative overflow-hidden">
                 <div className="flex gap-12 animate-marquee">
                   {[
@@ -85,10 +96,7 @@ function HomePage() {
                     { name: 'Sony', src: '/logos/sony.png' },
                     { name: 'Google', src: '/logos/google.png' },
                   ]).map((brand, idx) => (
-                    <div
-                      key={idx}
-                      className="flex-shrink-0 group cursor-pointer"
-                    >
+                    <div key={idx} className="flex-shrink-0 group cursor-pointer">
                       <div className="relative h-12 w-36 flex items-center justify-center">
                         <img
                           src={brand.src}
@@ -105,7 +113,6 @@ function HomePage() {
                 </div>
               </div>
             </div>
-            
             <style>{`
               @keyframes marquee {
                 0% { transform: translateX(0); }
@@ -120,7 +127,6 @@ function HomePage() {
             `}</style>
           </section>
 
-          {/* 3. Product Showcase - Apple iPhone Slider */}
           <section className="py-16 bg-gradient-to-b from-black to-zinc-950">
             <div className="max-w-7xl mx-auto px-6">
               <div className="flex items-center justify-between mb-10">
@@ -128,7 +134,7 @@ function HomePage() {
                   <p className="text-[10px] uppercase tracking-[0.4em] text-zinc-500 mb-2">Premium Collection</p>
                   <h2 className="text-3xl md:text-4xl font-bold text-white tracking-tight">Apple iPhone</h2>
                 </div>
-                <a href="#" className="text-sm text-zinc-400 hover:text-white transition-colors tracking-wide">View All →</a>
+                <Link to="/showroom" className="text-sm text-zinc-400 hover:text-white transition-colors tracking-wide">View All →</Link>
               </div>
             </div>
             
@@ -137,21 +143,10 @@ function HomePage() {
                 modules={[Autoplay, Navigation]}
                 spaceBetween={30}
                 slidesPerView={1}
-                autoplay={{
-                  delay: 3000,
-                  disableOnInteraction: false,
-                  pauseOnMouseEnter: true,
-                }}
+                autoplay={{ delay: 3000, disableOnInteraction: false, pauseOnMouseEnter: true }}
                 loop={true}
-                navigation={{
-                  nextEl: '.swiper-button-next-custom',
-                  prevEl: '.swiper-button-prev-custom',
-                }}
-                breakpoints={{
-                  640: { slidesPerView: 2 },
-                  1024: { slidesPerView: 3 },
-                  1280: { slidesPerView: 4 },
-                }}
+                navigation={{ nextEl: '.swiper-button-next-custom', prevEl: '.swiper-button-prev-custom' }}
+                breakpoints={{ 640: { slidesPerView: 2 }, 1024: { slidesPerView: 3 }, 1280: { slidesPerView: 4 } }}
                 className="!px-6"
               >
                 {applePhones.map((phone) => (
@@ -159,11 +154,7 @@ function HomePage() {
                     <div className="group relative bg-zinc-900/50 border border-white/10 rounded-2xl p-4 hover:border-white/20 hover:shadow-[0_0_40px_rgba(255,255,255,0.1)] transition-all duration-500 h-full">
                       <div className="relative h-64 flex items-center justify-center mb-4 overflow-hidden rounded-xl bg-gradient-to-b from-zinc-800/30 to-transparent">
                         <span className="absolute top-3 left-3 z-20 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-gradient-to-r from-zinc-600 to-zinc-800 text-white bg-opacity-90">Apple</span>
-                        <img
-                          src={phone.imageUrl}
-                          alt={phone.name}
-                          className="h-full w-full object-contain transition-transform duration-500 ease-out group-hover:scale-110 z-10"
-                        />
+                        <img src={phone.imageUrl} alt={phone.name} className="h-full w-full object-contain transition-transform duration-500 ease-out group-hover:scale-110 z-10" />
                         <button className="absolute top-3 right-3 z-20 p-2.5 rounded-full bg-black/60 backdrop-blur-md border border-white/10 opacity-0 group-hover:opacity-100 transition-all duration-300 hover:bg-black/80 hover:scale-110">
                           <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
@@ -173,7 +164,7 @@ function HomePage() {
                       <div className="space-y-2">
                         <h3 className="text-lg font-semibold text-white">{phone.name}</h3>
                         <p className="text-xl font-bold text-white">{phone.price}</p>
-                        <button className="w-full mt-4 py-3.5 rounded-xl bg-white text-black font-semibold text-sm uppercase tracking-wider hover:bg-zinc-200 hover:shadow-lg hover:shadow-white/10 transition-all duration-300">
+                        <button onClick={() => addToCart(phone)} className="w-full mt-4 py-3.5 rounded-xl bg-white text-black font-semibold text-sm uppercase tracking-wider hover:bg-zinc-200 hover:shadow-lg hover:shadow-white/10 transition-all duration-300">
                           Add to Cart
                         </button>
                       </div>
@@ -195,7 +186,6 @@ function HomePage() {
             </div>
           </section>
 
-          {/* 4. Product Showcase - Samsung Galaxy Slider */}
           <section className="py-16 bg-gradient-to-b from-zinc-950 to-black">
             <div className="max-w-7xl mx-auto px-6">
               <div className="flex items-center justify-between mb-10">
@@ -203,7 +193,7 @@ function HomePage() {
                   <p className="text-[10px] uppercase tracking-[0.4em] text-zinc-500 mb-2">Premium Collection</p>
                   <h2 className="text-3xl md:text-4xl font-bold text-white tracking-tight">Samsung Galaxy</h2>
                 </div>
-                <a href="#" className="text-sm text-zinc-400 hover:text-white transition-colors tracking-wide">View All →</a>
+                <Link to="/showroom" className="text-sm text-zinc-400 hover:text-white transition-colors tracking-wide">View All →</Link>
               </div>
             </div>
             
@@ -212,21 +202,10 @@ function HomePage() {
                 modules={[Autoplay, Navigation]}
                 spaceBetween={30}
                 slidesPerView={1}
-                autoplay={{
-                  delay: 3500,
-                  disableOnInteraction: false,
-                  pauseOnMouseEnter: true,
-                }}
+                autoplay={{ delay: 3500, disableOnInteraction: false, pauseOnMouseEnter: true }}
                 loop={true}
-                navigation={{
-                  nextEl: '.swiper-button-next-custom-samsung',
-                  prevEl: '.swiper-button-prev-custom-samsung',
-                }}
-                breakpoints={{
-                  640: { slidesPerView: 2 },
-                  1024: { slidesPerView: 3 },
-                  1280: { slidesPerView: 4 },
-                }}
+                navigation={{ nextEl: '.swiper-button-next-custom-samsung', prevEl: '.swiper-button-prev-custom-samsung' }}
+                breakpoints={{ 640: { slidesPerView: 2 }, 1024: { slidesPerView: 3 }, 1280: { slidesPerView: 4 } }}
                 className="!px-6"
               >
                 {samsungPhones.map((phone) => (
@@ -234,11 +213,7 @@ function HomePage() {
                     <div className="group relative bg-zinc-900/50 border border-white/10 rounded-2xl p-4 hover:border-white/20 hover:shadow-[0_0_40px_rgba(255,255,255,0.1)] transition-all duration-500 h-full">
                       <div className="relative overflow-hidden rounded-xl">
                         <span className="absolute top-3 left-3 z-20 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-gradient-to-r from-blue-600 to-blue-800 text-white bg-opacity-90">Samsung</span>
-                        <img
-                          src={phone.imageUrl}
-                          alt={phone.name}
-                          className="h-64 w-full object-contain mb-6 transition-transform duration-500 ease-in-out group-hover:scale-110 z-10"
-                        />
+                        <img src={phone.imageUrl} alt={phone.name} className="h-64 w-full object-contain mb-6 transition-transform duration-500 ease-in-out group-hover:scale-110 z-10" />
                         <button className="absolute top-3 right-3 z-20 p-2.5 rounded-full bg-black/60 backdrop-blur-md border border-white/10 opacity-0 group-hover:opacity-100 transition-all duration-300 hover:bg-black/80 hover:scale-110">
                           <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
@@ -248,7 +223,7 @@ function HomePage() {
                       <div className="space-y-2">
                         <h3 className="text-lg font-semibold text-white">{phone.name}</h3>
                         <p className="text-xl font-bold text-white">{phone.price}</p>
-                        <button className="w-full mt-4 py-3.5 rounded-xl bg-white text-black font-semibold text-sm uppercase tracking-wider hover:bg-zinc-200 hover:shadow-lg hover:shadow-white/10 transition-all duration-300">
+                        <button onClick={() => addToCart(phone)} className="w-full mt-4 py-3.5 rounded-xl bg-white text-black font-semibold text-sm uppercase tracking-wider hover:bg-zinc-200 hover:shadow-lg hover:shadow-white/10 transition-all duration-300">
                           Add to Cart
                         </button>
                       </div>
@@ -270,7 +245,6 @@ function HomePage() {
             </div>
           </section>
 
-          {/* 5. Next Section - Scroll Animation Demo */}
           <section className="relative h-screen bg-gradient-to-b from-black via-zinc-950 to-black flex items-center justify-center overflow-hidden">
             <div className="absolute inset-0">
               <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-500/5 rounded-full blur-[120px]" />
@@ -294,11 +268,9 @@ function HomePage() {
             </div>
           </section>
 
-          {/* 6. Brands Marquee */}
           <BrandsMarquee />
         </main>
 
-        {/* 4. Footer */}
         <Footer />
       </div>
     </>

@@ -1,8 +1,13 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect, createContext, useContext } from 'react';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import { ShoppingBag } from 'lucide-react';
+import { AnimatePresence, motion } from 'framer-motion';
 
-export default function Navbar() {
+export const CartContext = createContext();
+
+export const useCart = () => useContext(CartContext);
+
+export default function Navbar({ cartCount }) {
   return (
     <nav className="fixed top-0 left-0 w-full z-[100] bg-black/80 backdrop-blur-xl border-b border-white/5">
       <div className="max-w-[1400px] mx-auto px-6 py-4 md:px-12 flex items-center justify-between">
@@ -23,9 +28,26 @@ export default function Navbar() {
 
         <button className="flex items-center gap-2 rounded-full bg-white/10 backdrop-blur-md border border-white/10 px-4 py-2.5 hover:bg-white/20 transition-all duration-300 shadow-[0_0_15px_rgba(255,255,255,0.1)]">
           <ShoppingBag className="w-4 h-4 text-white" />
-          <span className="text-xs font-medium text-white uppercase tracking-wider">(0)</span>
+          <span className="text-xs font-medium text-white uppercase tracking-wider">({cartCount})</span>
         </button>
       </div>
     </nav>
+  );
+}
+
+export function Toast({ message, isVisible }) {
+  return (
+    <AnimatePresence>
+      {isVisible && (
+        <motion.div
+          initial={{ opacity: 0, y: 50, x: '-50%' }}
+          animate={{ opacity: 1, y: 0, x: '-50%' }}
+          exit={{ opacity: 0, y: 50, x: '-50%' }}
+          className="fixed bottom-6 left-1/2 z-[200] px-6 py-3 rounded-full bg-white text-black text-sm font-medium shadow-lg"
+        >
+          {message}
+        </motion.div>
+      )}
+    </AnimatePresence>
   );
 }

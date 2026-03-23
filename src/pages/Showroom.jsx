@@ -22,7 +22,7 @@ const allPhones = [
 
 const brands = ['All', 'Apple', 'Samsung', 'Google', 'OnePlus', 'Xiaomi', 'Oppo', 'Vivo'];
 
-export default function Showroom() {
+export default function Showroom({ addToCart }) {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedBrand, setSelectedBrand] = useState('All');
   const [hoveredId, setHoveredId] = useState(null);
@@ -144,7 +144,7 @@ export default function Showroom() {
                 <div className="space-y-2">
                   <h3 className="text-lg font-semibold text-white truncate">{phone.name}</h3>
                   <p className="text-xl font-bold text-white">{phone.price}</p>
-                  <button className="w-full mt-2 py-3 rounded-xl bg-white text-black font-semibold text-sm uppercase tracking-wider hover:bg-zinc-200 hover:shadow-lg hover:shadow-white/10 transition-all duration-300">
+                  <button onClick={() => addToCart(phone)} className="w-full mt-2 py-3 rounded-xl bg-white text-black font-semibold text-sm uppercase tracking-wider hover:bg-zinc-200 hover:shadow-lg hover:shadow-white/10 transition-all duration-300">
                     Add to Cart
                   </button>
                 </div>
