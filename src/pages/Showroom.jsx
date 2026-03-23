@@ -3,10 +3,10 @@ import { Link, useNavigate } from 'react-router-dom';
 
 const allPhones = [
   { id: 1, brand: 'Apple', name: "iPhone 15 Pro Max", price: "Rs. 395,000", imageUrl: "/phones/iPhone 15 Pro Max.jpg" },
-  { id: 2, brand: 'Apple', name: "iPhone 15 Pro", price: "Rs. 345,000", imageUrl: "/phones/iPhone 15 Pro.png" },
+  { id: 2, brand: 'Apple', name: "iPhone 15 Pro", price: "Rs. 345,000", imageUrl: "/phones/iPhone 15 pro.jpg" },
   { id: 3, brand: 'Apple', name: "iPhone 15", price: "Rs. 285,000", imageUrl: "/phones/iPhone 15 pro.jpg" },
   { id: 4, brand: 'Apple', name: "iPhone 14 Pro Max", price: "Rs. 315,000", imageUrl: "/phones/iPhone 14 Pro Max.jpg" },
-  { id: 5, brand: 'Apple', name: "iPhone 14", price: "Rs. 225,000", imageUrl: "/phones/iPhone 14.png" },
+  { id: 5, brand: 'Apple', name: "iPhone 14", price: "Rs. 225,000", imageUrl: "/phones/iPhone 14.jpg" },
   { id: 6, brand: 'Samsung', name: "Galaxy S24 Ultra", price: "Rs. 395,000", imageUrl: "/phones/Galaxy S24 Ultra.jpg" },
   { id: 7, brand: 'Samsung', name: "Galaxy S24+", price: "Rs. 295,000", imageUrl: "/phones/Galaxy S24+.avif" },
   { id: 8, brand: 'Samsung', name: "Galaxy Z Fold 5", price: "Rs. 495,000", imageUrl: "/phones/Galaxy Z Fold 5.jpg" },

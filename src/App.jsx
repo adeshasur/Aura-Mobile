@@ -13,10 +13,10 @@ import 'swiper/css/navigation';
 
 const applePhones = [
   { id: 1, name: "iPhone 15 Pro Max", price: "Rs. 395,000", imageUrl: "/phones/iPhone 15 Pro Max.jpg" },
-  { id: 2, name: "iPhone 15 Pro", price: "Rs. 345,000", imageUrl: "/phones/iPhone 15 Pro.png" },
+  { id: 2, name: "iPhone 15 Pro", price: "Rs. 345,000", imageUrl: "/phones/iPhone 15 pro.jpg" },
   { id: 3, name: "iPhone 15", price: "Rs. 285,000", imageUrl: "/phones/iPhone 15 pro.jpg" },
   { id: 4, name: "iPhone 14 Pro Max", price: "Rs. 315,000", imageUrl: "/phones/iPhone 14 Pro Max.jpg" },
-  { id: 5, name: "iPhone 14", price: "Rs. 225,000", imageUrl: "/phones/iPhone 14.png" },
+  { id: 5, name: "iPhone 14", price: "Rs. 225,000", imageUrl: "/phones/iPhone 14.jpg" },
   { id: 6, name: "iPhone 15 Black", price: "Rs. 285,000", imageUrl: "/phones/iPhone-15-pro-Black.jpg" },
 ];
 
