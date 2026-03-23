@@ -6,6 +6,8 @@ import BrandVault from './components/BrandVault';
 import Footer from './components/Footer';
 import Preloader from './components/Preloader';
 import Showroom from './pages/Showroom';
+import TheVault from './pages/TheVault';
+import Support from './pages/Support';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Navigation } from 'swiper/modules';
 import 'swiper/css';
@@ -34,6 +36,8 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/showroom" element={<Showroom />} />
+        <Route path="/the-vault" element={<TheVault />} />
+        <Route path="/support" element={<Support />} />
       </Routes>
     </Router>
   );
@@ -60,8 +64,8 @@ function HomePage() {
             {/* Nav Links */}
             <div className="hidden md:flex items-center gap-8 text-xs font-medium uppercase tracking-[0.2em] text-zinc-400">
               <Link to="/showroom" className="hover:text-white transition-colors">Showroom</Link>
-              <a href="#" className="hover:text-white transition-colors">The Vault</a>
-              <a href="#" className="hover:text-white transition-colors">Support</a>
+              <Link to="/the-vault" className="hover:text-white transition-colors">The Vault</Link>
+              <Link to="/support" className="hover:text-white transition-colors">Support</Link>
             </div>
 
             {/* CTA */}
