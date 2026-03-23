@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Canvas } from '@react-three/fiber';
+import { Link } from 'react-router-dom';
 import PhoneModels from './PhoneModels';
 import { motion, useInView } from 'framer-motion';
 import gsap from 'gsap';
@@ -197,7 +198,7 @@ export default function Hero() {
 
       <div className="absolute bottom-16 z-50 flex justify-center w-full pointer-events-auto">
         <motion.div
-          className="flex flex-col items-center gap-2"
+          className="flex flex-col items-center gap-4"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 1.2 }}
@@ -205,15 +206,23 @@ export default function Hero() {
           <motion.p className="text-[10px] uppercase tracking-[0.3em] text-zinc-600 mb-2">
             Scroll to explore
           </motion.p>
-          <motion.button
-            className="relative px-10 py-4 rounded-full bg-white text-black font-semibold tracking-widest uppercase text-xs overflow-hidden group"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.98 }}
-          >
-            <span className="relative z-10">Pre-Order Now</span>
-            <div className="absolute inset-0 bg-gradient-to-r from-zinc-200 via-white to-zinc-200 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-            <div className="absolute -inset-1 rounded-full blur-md bg-white/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-          </motion.button>
+          <div className="flex items-center gap-4">
+            <motion.button
+              className="relative px-10 py-4 rounded-full bg-white text-black font-semibold tracking-widest uppercase text-xs overflow-hidden group"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.98 }}
+            >
+              <span className="relative z-10">Pre-Order Now</span>
+              <div className="absolute inset-0 bg-gradient-to-r from-zinc-200 via-white to-zinc-200 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <div className="absolute -inset-1 rounded-full blur-md bg-white/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            </motion.button>
+            <Link
+              to="/showroom"
+              className="relative px-10 py-4 rounded-full border border-white/30 text-white font-semibold tracking-widest uppercase text-xs overflow-hidden hover:bg-white/10 transition-all duration-300"
+            >
+              Browse All
+            </Link>
+          </div>
         </motion.div>
       </div>
 

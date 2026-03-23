@@ -1,41 +1,54 @@
 import React, { useState } from 'react';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import Hero from './components/Hero';
 import BrandsMarquee from './components/BrandsMarquee';
 import BrandVault from './components/BrandVault';
 import Footer from './components/Footer';
 import Preloader from './components/Preloader';
+import Showroom from './pages/Showroom';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Navigation } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 
 const applePhones = [
-  { id: 1, name: "iPhone 15 Pro Max", price: "Rs. 395,000", imageUrl: "https://assets.swappie.com/cdn-cgi/image/width=600,height=600,fit=contain,format=auto/swappie-iphone-15-pro-max-natural-titanium-back.png" },
-  { id: 2, name: "iPhone 15 Pro", price: "Rs. 345,000", imageUrl: "https://assets.swappie.com/cdn-cgi/image/width=600,height=600,fit=contain,format=auto/swappie-iphone-15-pro-blue-titanium-back.png" },
-  { id: 3, name: "iPhone 15", price: "Rs. 285,000", imageUrl: "https://assets.swappie.com/cdn-cgi/image/width=600,height=600,fit=contain,format=auto/swappie-iphone-15-pink-back.png" },
-  { id: 4, name: "iPhone 14 Pro Max", price: "Rs. 315,000", imageUrl: "https://assets.swappie.com/cdn-cgi/image/width=600,height=600,fit=contain,format=auto/swappie-iphone-14-pro-max-deep-purple-back.png" },
-  { id: 5, name: "iPhone 14 Pro", price: "Rs. 275,000", imageUrl: "https://assets.swappie.com/cdn-cgi/image/width=600,height=600,fit=contain,format=auto/swappie-iphone-14-pro-space-black-back.png" },
-  { id: 6, name: "iPhone 14", price: "Rs. 225,000", imageUrl: "https://assets.swappie.com/cdn-cgi/image/width=600,height=600,fit=contain,format=auto/swappie-iphone-14-midnight-back.png" },
-  { id: 7, name: "iPhone 13 Pro Max", price: "Rs. 255,000", imageUrl: "https://assets.swappie.com/cdn-cgi/image/width=600,height=600,fit=contain,format=auto/swappie-iphone-13-pro-max-sierra-blue-back.png" },
-  { id: 8, name: "iPhone 13", price: "Rs. 185,000", imageUrl: "https://assets.swappie.com/cdn-cgi/image/width=600,height=600,fit=contain,format=auto/swappie-iphone-13-midnight-back.png" },
-  { id: 9, name: "iPhone 12 Pro", price: "Rs. 165,000", imageUrl: "https://assets.swappie.com/cdn-cgi/image/width=600,height=600,fit=contain,format=auto/swappie-iphone-12-pro-pacific-blue-back.png" },
-  { id: 10, name: "iPhone SE (3rd Gen)", price: "Rs. 125,000", imageUrl: "https://assets.swappie.com/cdn-cgi/image/width=600,height=600,fit=contain,format=auto/swappie-iphone-se-2022-starlight-back.png" }
+  { id: 1, name: "iPhone 15 Pro Max", price: "Rs. 395,000", imageUrl: "https://placehold.co/600x600/1a1a1a/fff?text=iPhone+15+Pro+Max" },
+  { id: 2, name: "iPhone 15 Pro", price: "Rs. 345,000", imageUrl: "https://placehold.co/600x600/1a1a1a/fff?text=iPhone+15+Pro" },
+  { id: 3, name: "iPhone 15", price: "Rs. 285,000", imageUrl: "https://placehold.co/600x600/1a1a1a/fff?text=iPhone+15" },
+  { id: 4, name: "iPhone 14 Pro Max", price: "Rs. 315,000", imageUrl: "https://placehold.co/600x600/1a1a1a/fff?text=iPhone+14+Pro+Max" },
+  { id: 5, name: "iPhone 14 Pro", price: "Rs. 275,000", imageUrl: "https://placehold.co/600x600/1a1a1a/fff?text=iPhone+14+Pro" },
+  { id: 6, name: "iPhone 14", price: "Rs. 225,000", imageUrl: "https://placehold.co/600x600/1a1a1a/fff?text=iPhone+14" },
+  { id: 7, name: "iPhone 13 Pro Max", price: "Rs. 255,000", imageUrl: "https://placehold.co/600x600/1a1a1a/fff?text=iPhone+13+Pro+Max" },
+  { id: 8, name: "iPhone 13", price: "Rs. 185,000", imageUrl: "https://placehold.co/600x600/1a1a1a/fff?text=iPhone+13" },
+  { id: 9, name: "iPhone 12 Pro", price: "Rs. 165,000", imageUrl: "https://placehold.co/600x600/1a1a1a/fff?text=iPhone+12+Pro" },
+  { id: 10, name: "iPhone SE (3rd Gen)", price: "Rs. 125,000", imageUrl: "https://placehold.co/600x600/1a1a1a/fff?text=iPhone+SE" }
 ];
 
 const samsungPhones = [
-  { id: 1, name: "Galaxy S26 Ultra (Concept)", price: "Rs. 450,000", imageUrl: "https://images.samsung.com/is/image/samsung/p6pim/lk/2401/gallery/lk-galaxy-s24-s928-sm-s928bztqslk-thumb-539325447?$344_344_PNG$" },
-  { id: 2, name: "Galaxy Z Fold 5", price: "Rs. 520,000", imageUrl: "https://images.samsung.com/is/image/samsung/p6pim/lk/sm-f946blbalme/gallery/lk-galaxy-z-fold5-f946-sm-f946blbalme-thumb-537407221?$344_344_PNG$" },
-  { id: 3, name: "Galaxy Z Flip 5", price: "Rs. 320,000", imageUrl: "https://images.samsung.com/is/image/samsung/p6pim/lk/sm-f731blgalme/gallery/lk-galaxy-z-flip5-f731-sm-f731blgalme-thumb-537405822?$344_344_PNG$" },
-  { id: 4, name: "Galaxy S23 Ultra", price: "Rs. 360,000", imageUrl: "https://images.samsung.com/is/image/samsung/p6pim/lk/sm-s918bzgwslk/gallery/lk-galaxy-s23-ultra-s918-sm-s918bzgwslk-thumb-534886905?$344_344_PNG$" },
-  { id: 5, name: "Galaxy S23 FE", price: "Rs. 210,000", imageUrl: "https://images.samsung.com/is/image/samsung/p6pim/lk/sm-s711blgasa/gallery/lk-galaxy-s23-fe-s711-sm-s711blgasa-thumb-538596662?$344_344_PNG$" },
-  { id: 6, name: "Galaxy A55 5G", price: "Rs. 145,000", imageUrl: "https://images.samsung.com/is/image/samsung/p6pim/lk/sm-a556elbcslk/gallery/lk-galaxy-a55-5g-sm-a556-sm-a556elbcslk-thumb-540280970?$344_344_PNG$" },
-  { id: 7, name: "Galaxy A35 5G", price: "Rs. 115,000", imageUrl: "https://images.samsung.com/is/image/samsung/p6pim/lk/sm-a356elbcslk/gallery/lk-galaxy-a35-5g-sm-a356-sm-a356elbcslk-thumb-540279679?$344_344_PNG$" },
-  { id: 8, name: "Galaxy A25 5G", price: "Rs. 85,000", imageUrl: "https://images.samsung.com/is/image/samsung/p6pim/lk/sm-a256elbfslk/gallery/lk-galaxy-a25-5g-sm-a256-sm-a256elbfslk-thumb-539266870?$344_344_PNG$" },
-  { id: 9, name: "Galaxy A15 5G", price: "Rs. 65,000", imageUrl: "https://images.samsung.com/is/image/samsung/p6pim/lk/sm-a156elbdslk/gallery/lk-galaxy-a15-5g-sm-a156-sm-a156elbdslk-thumb-539266597?$344_344_PNG$" },
-  { id: 10, name: "Galaxy A05s", price: "Rs. 45,000", imageUrl: "https://images.samsung.com/is/image/samsung/p6pim/lk/sm-a057flsgslk/gallery/lk-galaxy-a05s-sm-a057-sm-a057flsgslk-thumb-538661645?$344_344_PNG$" }
+  { id: 1, name: "Galaxy S24 Ultra", price: "Rs. 395,000", imageUrl: "https://placehold.co/600x600/1a1a2a/fff?text=Galaxy+S24+Ultra" },
+  { id: 2, name: "Galaxy S24+", price: "Rs. 295,000", imageUrl: "https://placehold.co/600x600/1a1a2a/fff?text=Galaxy+S24%2B" },
+  { id: 3, name: "Galaxy Z Fold 5", price: "Rs. 495,000", imageUrl: "https://placehold.co/600x600/1a1a2a/fff?text=Galaxy+Z+Fold+5" },
+  { id: 4, name: "Galaxy Z Flip 5", price: "Rs. 295,000", imageUrl: "https://placehold.co/600x600/1a1a2a/fff?text=Galaxy+Z+Flip+5" },
+  { id: 5, name: "Galaxy S23 Ultra", price: "Rs. 345,000", imageUrl: "https://placehold.co/600x600/1a1a2a/fff?text=Galaxy+S23+Ultra" },
+  { id: 6, name: "Galaxy S23+", price: "Rs. 265,000", imageUrl: "https://placehold.co/600x600/1a1a2a/fff?text=Galaxy+S23%2B" },
+  { id: 7, name: "Galaxy A55 5G", price: "Rs. 145,000", imageUrl: "https://placehold.co/600x600/1a1a2a/fff?text=Galaxy+A55+5G" }, 
+  { id: 8, name: "Galaxy A35 5G", price: "Rs. 115,000", imageUrl: "https://placehold.co/600x600/1a1a2a/fff?text=Galaxy+A35+5G" }, 
+  { id: 9, name: "Galaxy A25 5G", price: "Rs. 75,000", imageUrl: "https://placehold.co/600x600/1a1a2a/fff?text=Galaxy+A25+5G" }, 
+  { id: 10, name: "Galaxy A15 5G", price: "Rs. 55,000", imageUrl: "https://placehold.co/600x600/1a1a2a/fff?text=Galaxy+A15+5G" } 
 ];
 
 function App() {
+  return (
+    <Router>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/showroom" element={<Showroom />} />
+      </Routes>
+    </Router>
+  );
+}
+
+function HomePage() {
   return (
     <>
       <div className="min-h-screen bg-[#000000] text-[#f6efe7] selection:bg-white/20 selection:text-white font-sans cursor-default">
@@ -44,18 +57,18 @@ function App() {
           <div className="max-w-[1400px] mx-auto px-6 py-4 md:px-12 flex items-center justify-between">
             
             {/* Logo */}
-            <div className="flex items-center gap-4 cursor-pointer">
+            <Link to="/" className="flex items-center gap-4 cursor-pointer">
               <div className="flex items-center justify-center w-10 h-10 rounded-full border border-white/20 bg-white shadow-[0_0_15px_rgba(255,255,255,0.4)] text-black font-bold tracking-tighter">
                 AM
               </div>
               <div>
                 <p className="text-sm uppercase tracking-[0.3em] font-medium text-zinc-200">Aura Mobile</p>
               </div>
-            </div>
+            </Link>
 
             {/* Nav Links */}
             <div className="hidden md:flex items-center gap-8 text-xs font-medium uppercase tracking-[0.2em] text-zinc-400">
-              <a href="#" className="hover:text-white transition-colors">Showroom</a>
+              <Link to="/showroom" className="hover:text-white transition-colors">Showroom</Link>
               <a href="#" className="hover:text-white transition-colors">The Vault</a>
               <a href="#" className="hover:text-white transition-colors">Support</a>
             </div>
@@ -174,14 +187,14 @@ function App() {
               >
                 {applePhones.map((phone) => (
                   <SwiperSlide key={phone.id}>
-                    <div className="group relative bg-zinc-900/50 border border-white/10 rounded-2xl p-4 hover:border-white/20 hover:shadow-[0_0_30px_rgba(255,255,255,0.05)] transition-all duration-500 h-full">
-                      <div className="relative h-64 flex items-center justify-center mb-4 overflow-hidden rounded-xl">
+                    <div className="group relative bg-zinc-900/50 border border-white/10 rounded-2xl p-4 hover:border-white/20 hover:shadow-[0_0_40px_rgba(255,255,255,0.1)] transition-all duration-500 h-full">
+                      <div className="relative h-64 flex items-center justify-center mb-4 overflow-hidden rounded-xl bg-gradient-to-b from-zinc-800/30 to-transparent">
                         <img
                           src={phone.imageUrl}
                           alt={phone.name}
-                          className="h-full w-full object-contain transition-transform duration-500 ease-in-out group-hover:scale-110"
+                          className="h-full w-full object-contain transition-transform duration-500 ease-out group-hover:scale-110"
                         />
-                        <button className="absolute top-2 right-2 p-2 rounded-full bg-black/50 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity">
+                        <button className="absolute top-3 right-3 p-2.5 rounded-full bg-black/60 backdrop-blur-md border border-white/10 opacity-0 group-hover:opacity-100 transition-all duration-300 hover:bg-black/80 hover:scale-110">
                           <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
                           </svg>
@@ -190,7 +203,7 @@ function App() {
                       <div className="space-y-2">
                         <h3 className="text-lg font-semibold text-white">{phone.name}</h3>
                         <p className="text-xl font-bold text-white">{phone.price}</p>
-                        <button className="w-full mt-3 py-3 rounded-xl bg-white text-black font-semibold text-sm uppercase tracking-wider hover:bg-zinc-200 transition-colors">
+                        <button className="w-full mt-4 py-3.5 rounded-xl bg-white text-black font-semibold text-sm uppercase tracking-wider hover:bg-zinc-200 hover:shadow-lg hover:shadow-white/10 transition-all duration-300">
                           Add to Cart
                         </button>
                       </div>
@@ -248,14 +261,14 @@ function App() {
               >
                 {samsungPhones.map((phone) => (
                   <SwiperSlide key={phone.id}>
-                    <div className="group relative bg-zinc-900/50 border border-white/10 rounded-2xl p-4 hover:border-white/20 hover:shadow-[0_0_30px_rgba(255,255,255,0.05)] transition-all duration-500 h-full">
-                      <div className="relative h-64 flex items-center justify-center mb-4 overflow-hidden rounded-xl">
+                    <div className="group relative bg-zinc-900/50 border border-white/10 rounded-2xl p-4 hover:border-white/20 hover:shadow-[0_0_40px_rgba(255,255,255,0.1)] transition-all duration-500 h-full">
+                      <div className="relative overflow-hidden rounded-xl">
                         <img
                           src={phone.imageUrl}
                           alt={phone.name}
-                          className="h-full w-full object-contain transition-transform duration-500 ease-in-out group-hover:scale-110"
+                          className="h-64 w-full object-contain mb-6 transition-transform duration-500 ease-in-out group-hover:scale-110"
                         />
-                        <button className="absolute top-2 right-2 p-2 rounded-full bg-black/50 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity">
+                        <button className="absolute top-3 right-3 p-2.5 rounded-full bg-black/60 backdrop-blur-md border border-white/10 opacity-0 group-hover:opacity-100 transition-all duration-300 hover:bg-black/80 hover:scale-110">
                           <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
                           </svg>
@@ -264,7 +277,7 @@ function App() {
                       <div className="space-y-2">
                         <h3 className="text-lg font-semibold text-white">{phone.name}</h3>
                         <p className="text-xl font-bold text-white">{phone.price}</p>
-                        <button className="w-full mt-3 py-3 rounded-xl bg-white text-black font-semibold text-sm uppercase tracking-wider hover:bg-zinc-200 transition-colors">
+                        <button className="w-full mt-4 py-3.5 rounded-xl bg-white text-black font-semibold text-sm uppercase tracking-wider hover:bg-zinc-200 hover:shadow-lg hover:shadow-white/10 transition-all duration-300">
                           Add to Cart
                         </button>
                       </div>
