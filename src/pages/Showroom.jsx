@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import Navbar from '../components/Navbar';
 
 const allPhones = [
   { id: 1, brand: 'Apple', name: "iPhone 15 Pro Max", price: "Rs. 395,000", imageUrl: "/phones/iPhone 15 Pro Max.jpg" },
@@ -22,7 +23,9 @@ const allPhones = [
 
 const brands = ['All', 'Apple', 'Samsung', 'Google', 'OnePlus', 'Xiaomi', 'Oppo', 'Vivo'];
 
-export default function Showroom({ addToCart }) {
+export default function Showroom({ addToCart, isCartOpen, setIsCartOpen, cartCount }) {
+  const cartItems = JSON.parse(localStorage.getItem('aura-cart') || '[]');
+  const actualCartCount = cartCount !== undefined ? cartCount : cartItems.length;
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedBrand, setSelectedBrand] = useState('All');
   const [hoveredId, setHoveredId] = useState(null);
@@ -47,23 +50,9 @@ export default function Showroom({ addToCart }) {
 
   return (
     <div className="min-h-screen bg-black text-white">
-      <div className="fixed top-0 left-0 w-full z-[100] bg-black/80 backdrop-blur-xl border-b border-white/10">
-        <div className="max-w-7xl mx-auto px-6 py-4">
-          <div className="flex items-center justify-between mb-4">
-            <Link to="/" className="flex items-center gap-3 group">
-              <div className="flex h-10 w-10 items-center justify-center rounded-full border border-white/20 bg-white shadow-[0_0_15px_rgba(255,255,255,0.4)] text-black font-bold tracking-tighter">
-                AM
-              </div>
-              <span className="text-xs uppercase tracking-[0.2em] text-zinc-400 group-hover:text-white transition-colors">Back to Home</span>
-            </Link>
-            <h1 className="text-2xl font-bold tracking-widest uppercase text-white">Showroom</h1>
-            <div className="flex items-center gap-8 text-xs font-medium uppercase tracking-[0.15em] text-zinc-400">
-              <Link to="/showroom" className="opacity-100 text-white">Showroom</Link>
-              <Link to="/support" className="opacity-80 hover:opacity-100 hover:text-white transition-all duration-300">Support</Link>
-            </div>
-          </div>
+      <Navbar cartCount={actualCartCount} isCartOpen={isCartOpen} setIsCartOpen={setIsCartOpen} />
 
-          <div className="flex flex-col md:flex-row gap-4 items-start md:items-center justify-between">
+      <div className="pt-24 pb-8 px-6">
             <div className="relative w-full md:w-96">
               <svg className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-zinc-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
@@ -93,8 +82,6 @@ export default function Showroom({ addToCart }) {
               ))}
             </div>
           </div>
-        </div>
-      </div>
 
       <div className="max-w-7xl mx-auto px-6 py-12">
         <div className="flex items-center justify-between mb-8">

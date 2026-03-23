@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import Hero from './components/Hero';
 import Navbar, { Toast } from './components/Navbar';
+import CartSidebar from './components/CartSidebar';
 import BrandsMarquee from './components/BrandsMarquee';
 import Footer from './components/Footer';
 import Showroom from './pages/Showroom';
@@ -34,6 +35,7 @@ function App() {
     return saved ? JSON.parse(saved) : [];
   });
   const [toast, setToast] = useState({ visible: false, message: '' });
+  const [isCartOpen, setIsCartOpen] = useState(false);
 
   useEffect(() => {
     localStorage.setItem('aura-cart', JSON.stringify(cart));
@@ -45,23 +47,28 @@ function App() {
     setTimeout(() => setToast({ visible: false, message: '' }), 2000);
   };
 
+  const removeFromCart = (index) => {
+    setCart(prev => prev.filter((_, i) => i !== index));
+  };
+
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<HomePage cart={cart} addToCart={addToCart} />} />
-        <Route path="/showroom" element={<Showroom addToCart={addToCart} />} />
-        <Route path="/support" element={<Support />} />
+        <Route path="/" element={<HomePage cart={cart} addToCart={addToCart} isCartOpen={isCartOpen} setIsCartOpen={setIsCartOpen} />} />
+        <Route path="/showroom" element={<Showroom addToCart={addToCart} isCartOpen={isCartOpen} setIsCartOpen={setIsCartOpen} />} />
+        <Route path="/support" element={<Support isCartOpen={isCartOpen} setIsCartOpen={setIsCartOpen} />} />
       </Routes>
+      <CartSidebar isOpen={isCartOpen} onClose={() => setIsCartOpen(false)} cart={cart} removeFromCart={removeFromCart} />
       <Toast message={toast.message} isVisible={toast.visible} />
     </Router>
   );
 }
 
-function HomePage({ cart, addToCart }) {
+function HomePage({ cart, addToCart, isCartOpen, setIsCartOpen }) {
   return (
     <>
       <div className="min-h-screen bg-[#000000] text-[#f6efe7] selection:bg-white/20 selection:text-white font-sans cursor-default">
-        <Navbar cartCount={cart.length} />
+        <Navbar cartCount={cart.length} isCartOpen={isCartOpen} setIsCartOpen={setIsCartOpen} />
 
         <main>
           <Hero />

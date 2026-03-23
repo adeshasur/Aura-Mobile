@@ -3,8 +3,9 @@ import { MessageCircle, Mail, Phone, Clock, Send, Box } from 'lucide-react';
 import { motion } from 'framer-motion';
 import Navbar from '../components/Navbar';
 
-export default function Support() {
+export default function Support({ isCartOpen, setIsCartOpen }) {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
+  const cartItems = JSON.parse(localStorage.getItem('aura-cart') || '[]');
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -20,7 +21,7 @@ export default function Support() {
       </div>
 
       <div className="relative z-10 h-full flex flex-col">
-        <Navbar />
+        <Navbar cartCount={cartItems.length} isCartOpen={isCartOpen} setIsCartOpen={setIsCartOpen} />
 
         <main className="flex-1 flex flex-col items-center justify-center px-6 py-4">
           <div className="w-full max-w-6xl">
