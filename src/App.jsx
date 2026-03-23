@@ -22,6 +22,19 @@ const applePhones = [
   { id: 10, name: "iPhone SE (3rd Gen)", price: "Rs. 125,000", imageUrl: "https://assets.swappie.com/cdn-cgi/image/width=600,height=600,fit=contain,format=auto/swappie-iphone-se-2022-starlight-back.png" }
 ];
 
+const samsungPhones = [
+  { id: 1, name: "Galaxy S26 Ultra (Concept)", price: "Rs. 450,000", imageUrl: "https://images.samsung.com/is/image/samsung/p6pim/lk/2401/gallery/lk-galaxy-s24-s928-sm-s928bztqslk-thumb-539325447?$344_344_PNG$" },
+  { id: 2, name: "Galaxy Z Fold 5", price: "Rs. 520,000", imageUrl: "https://images.samsung.com/is/image/samsung/p6pim/lk/sm-f946blbalme/gallery/lk-galaxy-z-fold5-f946-sm-f946blbalme-thumb-537407221?$344_344_PNG$" },
+  { id: 3, name: "Galaxy Z Flip 5", price: "Rs. 320,000", imageUrl: "https://images.samsung.com/is/image/samsung/p6pim/lk/sm-f731blgalme/gallery/lk-galaxy-z-flip5-f731-sm-f731blgalme-thumb-537405822?$344_344_PNG$" },
+  { id: 4, name: "Galaxy S23 Ultra", price: "Rs. 360,000", imageUrl: "https://images.samsung.com/is/image/samsung/p6pim/lk/sm-s918bzgwslk/gallery/lk-galaxy-s23-ultra-s918-sm-s918bzgwslk-thumb-534886905?$344_344_PNG$" },
+  { id: 5, name: "Galaxy S23 FE", price: "Rs. 210,000", imageUrl: "https://images.samsung.com/is/image/samsung/p6pim/lk/sm-s711blgasa/gallery/lk-galaxy-s23-fe-s711-sm-s711blgasa-thumb-538596662?$344_344_PNG$" },
+  { id: 6, name: "Galaxy A55 5G", price: "Rs. 145,000", imageUrl: "https://images.samsung.com/is/image/samsung/p6pim/lk/sm-a556elbcslk/gallery/lk-galaxy-a55-5g-sm-a556-sm-a556elbcslk-thumb-540280970?$344_344_PNG$" },
+  { id: 7, name: "Galaxy A35 5G", price: "Rs. 115,000", imageUrl: "https://images.samsung.com/is/image/samsung/p6pim/lk/sm-a356elbcslk/gallery/lk-galaxy-a35-5g-sm-a356-sm-a356elbcslk-thumb-540279679?$344_344_PNG$" },
+  { id: 8, name: "Galaxy A25 5G", price: "Rs. 85,000", imageUrl: "https://images.samsung.com/is/image/samsung/p6pim/lk/sm-a256elbfslk/gallery/lk-galaxy-a25-5g-sm-a256-sm-a256elbfslk-thumb-539266870?$344_344_PNG$" },
+  { id: 9, name: "Galaxy A15 5G", price: "Rs. 65,000", imageUrl: "https://images.samsung.com/is/image/samsung/p6pim/lk/sm-a156elbdslk/gallery/lk-galaxy-a15-5g-sm-a156-sm-a156elbdslk-thumb-539266597?$344_344_PNG$" },
+  { id: 10, name: "Galaxy A05s", price: "Rs. 45,000", imageUrl: "https://images.samsung.com/is/image/samsung/p6pim/lk/sm-a057flsgslk/gallery/lk-galaxy-a05s-sm-a057-sm-a057flsgslk-thumb-538661645?$344_344_PNG$" }
+];
+
 function App() {
   return (
     <>
@@ -199,7 +212,7 @@ function App() {
             </div>
           </section>
 
-          {/* 4. Product Showcase - Samsung Galaxy */}
+          {/* 4. Product Showcase - Samsung Galaxy Slider */}
           <section className="py-16 bg-gradient-to-b from-zinc-950 to-black">
             <div className="max-w-7xl mx-auto px-6">
               <div className="flex items-center justify-between mb-10">
@@ -209,37 +222,66 @@ function App() {
                 </div>
                 <a href="#" className="text-sm text-zinc-400 hover:text-white transition-colors tracking-wide">View All →</a>
               </div>
-              
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                {[
-                  { name: 'Galaxy S26 Ultra', color: 'Titanium Gray', storage: '512GB', price: '425,000', img: 'https://images.samsung.com/is/image/samsung/p6pim/lk/2401/gallery/lk-galaxy-s24-s928-sm-s928bztqslk-thumb-539325447?$344_344_PNG$' },
-                  { name: 'Galaxy S26+', color: 'Black', storage: '256GB', price: '295,000', img: 'https://images.samsung.com/is/image/samsung/p6pim/lk/2401/gallery/lk-galaxy-s24-s928-sm-s928bztqslk-thumb-539325447?$344_344_PNG$' },
-                  { name: 'Galaxy Z Fold 6', color: 'Navy', storage: '256GB', price: '495,000', img: 'https://images.samsung.com/is/image/samsung/p6pim/lk/2401/gallery/lk-galaxy-s24-s928-sm-s928bztqslk-thumb-539325447?$344_344_PNG$' },
-                  { name: 'Galaxy Z Flip 6', color: 'Lavender', storage: '256GB', price: '295,000', img: 'https://images.samsung.com/is/image/samsung/p6pim/lk/2401/gallery/lk-galaxy-s24-s928-sm-s928bztqslk-thumb-539325447?$344_344_PNG$' },
-                ].map((product, idx) => (
-                  <div key={idx} className="group relative bg-zinc-900/50 border border-white/10 rounded-2xl p-5 hover:border-white/20 hover:shadow-[0_0_30px_rgba(255,255,255,0.05)] transition-all duration-500">
-                    <div className="relative h-56 flex items-center justify-center mb-4 overflow-hidden">
-                      <img
-                        src={product.img}
-                        alt={product.name}
-                        className="h-44 w-auto object-contain group-hover:scale-105 transition-transform duration-500"
-                      />
-                      <button className="absolute top-0 right-0 p-2 rounded-full bg-black/50 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity">
-                        <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-                        </svg>
-                      </button>
+            </div>
+            
+            <div className="relative">
+              <Swiper
+                modules={[Autoplay, Navigation]}
+                spaceBetween={30}
+                slidesPerView={1}
+                autoplay={{
+                  delay: 3500,
+                  disableOnInteraction: false,
+                  pauseOnMouseEnter: true,
+                }}
+                loop={true}
+                navigation={{
+                  nextEl: '.swiper-button-next-custom-samsung',
+                  prevEl: '.swiper-button-prev-custom-samsung',
+                }}
+                breakpoints={{
+                  640: { slidesPerView: 2 },
+                  1024: { slidesPerView: 3 },
+                  1280: { slidesPerView: 4 },
+                }}
+                className="!px-6"
+              >
+                {samsungPhones.map((phone) => (
+                  <SwiperSlide key={phone.id}>
+                    <div className="group relative bg-zinc-900/50 border border-white/10 rounded-2xl p-5 hover:border-white/20 hover:shadow-[0_0_30px_rgba(255,255,255,0.05)] transition-all duration-500 h-full">
+                      <div className="relative h-56 flex items-center justify-center mb-4 overflow-hidden">
+                        <img
+                          src={phone.imageUrl}
+                          alt={phone.name}
+                          className="h-44 w-auto object-contain group-hover:scale-105 transition-transform duration-500"
+                        />
+                        <button className="absolute top-0 right-0 p-2 rounded-full bg-black/50 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity">
+                          <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                          </svg>
+                        </button>
+                      </div>
+                      <div className="space-y-2">
+                        <h3 className="text-lg font-semibold text-white">{phone.name}</h3>
+                        <p className="text-xl font-bold text-white">{phone.price}</p>
+                        <button className="w-full mt-3 py-3 rounded-xl bg-white text-black font-semibold text-sm uppercase tracking-wider hover:bg-zinc-200 transition-colors">
+                          Add to Cart
+                        </button>
+                      </div>
                     </div>
-                    <div className="space-y-2">
-                      <p className="text-xs text-zinc-500 uppercase tracking-wide">{product.color} • {product.storage}</p>
-                      <h3 className="text-lg font-semibold text-white">{product.name}</h3>
-                      <p className="text-xl font-bold text-white">Rs. {product.price}</p>
-                      <button className="w-full mt-3 py-3 rounded-xl bg-white text-black font-semibold text-sm uppercase tracking-wider hover:bg-zinc-200 transition-colors">
-                        Add to Cart
-                      </button>
-                    </div>
-                  </div>
+                  </SwiperSlide>
                 ))}
+              </Swiper>
+              
+              <div className="swiper-button-prev-custom-samsung absolute left-4 top-1/2 -translate-y-1/2 z-10 w-12 h-12 rounded-full bg-black/50 backdrop-blur-sm border border-white/10 flex items-center justify-center cursor-pointer hover:bg-black/70 transition-colors">
+                <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                </svg>
+              </div>
+              <div className="swiper-button-next-custom-samsung absolute right-4 top-1/2 -translate-y-1/2 z-10 w-12 h-12 rounded-full bg-black/50 backdrop-blur-sm border border-white/10 flex items-center justify-center cursor-pointer hover:bg-black/70 transition-colors">
+                <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
               </div>
             </div>
           </section>
