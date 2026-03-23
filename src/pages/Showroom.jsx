@@ -111,16 +111,16 @@ export default function Showroom({ addToCart, isCartOpen, setIsCartOpen, cartCou
                 onMouseEnter={() => setHoveredId(phone.id)}
                 onMouseLeave={() => setHoveredId(null)}
               >
-                <div className="relative overflow-hidden rounded-xl">
-                  <span className={`absolute top-2 left-2 z-20 px-2 py-1 text-[10px] font-bold uppercase tracking-wider bg-gradient-to-r ${getBrandColor(phone.brand)} text-white backdrop-blur-sm`}>
+                <div className="relative z-0 overflow-hidden rounded-xl">
+                  <span className={`absolute top-2 left-2 z-[50] px-2 py-1 text-[10px] font-bold uppercase tracking-tighter bg-zinc-900/90 text-white`}>
                     {phone.brand}
                   </span>
                   <img
                     src={phone.imageUrl}
                     alt={phone.name}
-                    className="h-64 w-full object-contain z-10 transition-transform duration-500 group-hover:scale-110"
+                    className="relative z-10 h-64 w-full object-contain pointer-events-none transition-transform duration-500 group-hover:scale-110"
                   />
-                  <button className="absolute top-2 right-2 z-20 p-2 rounded-full bg-black/60 backdrop-blur-md border border-white/10 opacity-0 group-hover:opacity-100 transition-all duration-300 hover:bg-black/80 hover:scale-110">
+                  <button className="absolute top-2 right-2 z-[50] p-2 rounded-full bg-black/60 backdrop-blur-md border border-white/10 opacity-0 group-hover:opacity-100 transition-all duration-300 hover:bg-black/80 hover:scale-110">
                     <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
                     </svg>
