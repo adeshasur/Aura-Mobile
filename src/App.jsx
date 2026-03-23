@@ -252,7 +252,7 @@ function HomePage({ cart, addToCart, isCartOpen, setIsCartOpen }) {
             </div>
           </section>
 
-          <section className="relative h-screen bg-gradient-to-b from-black via-zinc-950 to-black flex items-center justify-center overflow-hidden">
+          <section className="relative min-h-screen py-20 bg-gradient-to-b from-black via-zinc-950 to-black flex items-center justify-center overflow-hidden">
             <div className="absolute inset-0">
               <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-500/5 rounded-full blur-[120px]" />
               <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/5 rounded-full blur-[120px]" />
@@ -275,7 +275,6 @@ function HomePage({ cart, addToCart, isCartOpen, setIsCartOpen }) {
             </div>
           </section>
 
-          <BrandsMarquee />
         </main>
 
         <Footer />
