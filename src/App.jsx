@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import Hero from './components/Hero';
+import Navbar from './components/Navbar';
 import BrandsMarquee from './components/BrandsMarquee';
 import BrandVault from './components/BrandVault';
 import Footer from './components/Footer';
 import Preloader from './components/Preloader';
 import Showroom from './pages/Showroom';
 import Support from './pages/Support';
+import { ShoppingBag } from 'lucide-react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Navigation } from 'swiper/modules';
 import 'swiper/css';
@@ -45,32 +47,7 @@ function HomePage() {
   return (
     <>
       <div className="min-h-screen bg-[#000000] text-[#f6efe7] selection:bg-white/20 selection:text-white font-sans cursor-default">
-        {/* Navigation */}
-        <nav className="fixed top-0 left-0 w-full z-[100] bg-black/80 backdrop-blur-xl border-b border-white/5">
-          <div className="max-w-[1400px] mx-auto px-6 py-4 md:px-12 flex items-center justify-between">
-            
-            {/* Logo */}
-            <Link to="/" className="flex items-center gap-4 cursor-pointer">
-              <div className="flex items-center justify-center w-10 h-10 rounded-full border border-white/20 bg-white shadow-[0_0_15px_rgba(255,255,255,0.4)] text-black font-bold tracking-tighter">
-                AM
-              </div>
-              <div>
-                <p className="text-sm uppercase tracking-[0.3em] font-medium text-zinc-200">Aura Mobile</p>
-              </div>
-            </Link>
-
-            {/* Nav Links */}
-            <div className="hidden md:flex items-center gap-12 text-xs font-medium uppercase tracking-[0.2em] text-zinc-400">
-              <Link to="/showroom" className="opacity-80 hover:opacity-100 hover:text-white transition-all duration-300">Showroom</Link>
-              <Link to="/support" className="opacity-80 hover:opacity-100 hover:text-white transition-all duration-300">Support</Link>
-            </div>
-
-            {/* CTA */}
-            <button className="rounded-full bg-white text-black px-6 py-2.5 text-xs font-bold uppercase tracking-widest hover:scale-105 transition-transform duration-300 shadow-[0_0_20px_rgba(255,255,255,0.2)]">
-              Cart (0)
-            </button>
-          </div>
-        </nav>
+        <Navbar />
 
         <main>
           {/* 1. Hero Section (The Ultimate Face-Off) */}
