@@ -47,17 +47,21 @@ export default function Showroom() {
 
   return (
     <div className="min-h-screen bg-black text-white">
-      <div className="sticky top-0 z-50 bg-black/80 backdrop-blur-xl border-b border-white/10">
+      <div className="sticky top-0 z-50 bg-black/50 backdrop-blur-md border-b border-white/10">
         <div className="max-w-7xl mx-auto px-6 py-4">
           <div className="flex items-center justify-between mb-4">
             <Link to="/" className="flex items-center gap-3 group">
-              <div className="flex h-10 w-10 items-center justify-center rounded-full border border-white/20 bg-white/5 backdrop-blur-sm group-hover:bg-white/10 transition-colors">
-                <span className="text-sm font-semibold text-white">AM</span>
+              <div className="flex h-10 w-10 items-center justify-center rounded-full border border-white/20 bg-white shadow-[0_0_15px_rgba(255,255,255,0.4)] text-black font-bold tracking-tighter">
+                AM
               </div>
-              <span className="text-xs uppercase tracking-[0.2em] text-zinc-500 group-hover:text-white transition-colors">Back to Home</span>
+              <span className="text-xs uppercase tracking-[0.2em] text-zinc-400 group-hover:text-white transition-colors">Back to Home</span>
             </Link>
-            <h1 className="text-2xl font-bold tracking-tight">SHOWROOM</h1>
-            <div className="w-24"></div>
+            <h1 className="text-2xl font-bold tracking-widest uppercase text-white">Showroom</h1>
+            <div className="flex items-center gap-6 text-xs font-medium uppercase tracking-[0.15em] text-zinc-400">
+              <Link to="/showroom" className="opacity-100 text-white">Showroom</Link>
+              <Link to="/the-vault" className="opacity-80 hover:opacity-100 hover:text-white transition-all duration-300">The Vault</Link>
+              <Link to="/support" className="opacity-80 hover:opacity-100 hover:text-white transition-all duration-300">Support</Link>
+            </div>
           </div>
 
           <div className="flex flex-col md:flex-row gap-4 items-start md:items-center justify-between">

@@ -63,9 +63,9 @@ function HomePage() {
 
             {/* Nav Links */}
             <div className="hidden md:flex items-center gap-8 text-xs font-medium uppercase tracking-[0.2em] text-zinc-400">
-              <Link to="/showroom" className="hover:text-white transition-colors">Showroom</Link>
-              <Link to="/the-vault" className="hover:text-white transition-colors">The Vault</Link>
-              <Link to="/support" className="hover:text-white transition-colors">Support</Link>
+              <Link to="/showroom" className="opacity-80 hover:opacity-100 hover:text-white transition-all duration-300">Showroom</Link>
+              <Link to="/the-vault" className="opacity-80 hover:opacity-100 hover:text-white transition-all duration-300">The Vault</Link>
+              <Link to="/support" className="opacity-80 hover:opacity-100 hover:text-white transition-all duration-300">Support</Link>
             </div>
 
             {/* CTA */}
