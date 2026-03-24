@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState, Suspense } from 'react';
 import { Canvas } from '@react-three/fiber';
 import { Link } from 'react-router-dom';
 import PhoneModels from './PhoneModels';
@@ -190,10 +190,12 @@ export default function Hero() {
 
       <div ref={canvasRef} className="absolute inset-0 z-30">
         <Canvas camera={{ position: [0, 0, 7], fov: 40 }} dpr={[1, 2]}>
-          <PhoneModels
-            iphoneRef={iphoneGroupRef}
-            samsungRef={samsungGroupRef}
-          />
+          <Suspense fallback={null}>
+            <PhoneModels
+              iphoneRef={iphoneGroupRef}
+              samsungRef={samsungGroupRef}
+            />
+          </Suspense>
         </Canvas>
       </div>
 

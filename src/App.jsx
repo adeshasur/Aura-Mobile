@@ -7,10 +7,13 @@ import BrandsMarquee from './components/BrandsMarquee';
 import Footer from './components/Footer';
 import Showroom from './pages/Showroom';
 import Support from './pages/Support';
+import Preloader from './components/Preloader';
+import CustomCursor from './components/CustomCursor';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Navigation } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
+import { AnimatePresence } from 'framer-motion';
 
 const applePhones = [
   { id: 1, name: "iPhone 15 Pro Max", price: "Rs. 395,000", imageUrl: "/phones/iPhone 15 Pro Max.jpg" },
@@ -36,6 +39,7 @@ function App() {
   });
   const [toast, setToast] = useState({ visible: false, message: '' });
   const [isCartOpen, setIsCartOpen] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     localStorage.setItem('aura-cart', JSON.stringify(cart));
@@ -53,6 +57,10 @@ function App() {
 
   return (
     <Router>
+      <CustomCursor />
+      <AnimatePresence mode="wait">
+        {isLoading && <Preloader onFinish={() => setIsLoading(false)} />}
+      </AnimatePresence>
       <Routes>
         <Route path="/" element={<HomePage cart={cart} addToCart={addToCart} isCartOpen={isCartOpen} setIsCartOpen={setIsCartOpen} />} />
         <Route path="/showroom" element={<Showroom addToCart={addToCart} isCartOpen={isCartOpen} setIsCartOpen={setIsCartOpen} />} />
@@ -108,6 +116,7 @@ function HomePage({ cart, addToCart, isCartOpen, setIsCartOpen }) {
                         <img
                           src={brand.src}
                           alt={brand.name}
+                          loading="lazy"
                           className="h-10 w-auto object-contain brightness-0 opacity-40 grayscale group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500"
                           onError={(e) => {
                             e.target.style.display = 'none';
@@ -162,7 +171,7 @@ function HomePage({ cart, addToCart, isCartOpen, setIsCartOpen }) {
                       <div className="relative z-0 overflow-hidden rounded-xl">
                         <span className="absolute top-2 left-2 z-[50] px-2 py-1 text-[10px] font-bold uppercase tracking-tighter bg-zinc-900/90 text-white">Apple</span>
                         <div className="h-64 flex items-center justify-center bg-gradient-to-b from-zinc-800/30 to-transparent">
-                          <img src={phone.imageUrl} alt={phone.name} className="relative z-10 h-full w-full object-contain pointer-events-none transition-transform duration-500 ease-out group-hover:scale-110" />
+                          <img src={phone.imageUrl} alt={phone.name} loading="lazy" className="relative z-10 h-full w-full object-contain pointer-events-none transition-transform duration-500 ease-out group-hover:scale-110" />
                         </div>
                         <button className="absolute top-2 right-2 z-[50] p-2 rounded-full bg-black/60 backdrop-blur-md border border-white/10 opacity-0 group-hover:opacity-100 transition-all duration-300 hover:bg-black/80 hover:scale-110">
                           <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -223,7 +232,7 @@ function HomePage({ cart, addToCart, isCartOpen, setIsCartOpen }) {
                       <div className="relative z-0 overflow-hidden rounded-xl">
                         <span className="absolute top-2 left-2 z-[50] px-2 py-1 text-[10px] font-bold uppercase tracking-tighter bg-zinc-900/90 text-white">Samsung</span>
                         <div className="h-64 flex items-center justify-center bg-gradient-to-b from-zinc-800/30 to-transparent">
-                          <img src={phone.imageUrl} alt={phone.name} className="relative z-10 h-full w-full object-contain pointer-events-none transition-transform duration-500 ease-in-out group-hover:scale-110" />
+                          <img src={phone.imageUrl} alt={phone.name} loading="lazy" className="relative z-10 h-full w-full object-contain pointer-events-none transition-transform duration-500 ease-in-out group-hover:scale-110" />
                         </div>
                         <button className="absolute top-2 right-2 z-[50] p-2 rounded-full bg-black/60 backdrop-blur-md border border-white/10 opacity-0 group-hover:opacity-100 transition-all duration-300 hover:bg-black/80 hover:scale-110">
                           <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">

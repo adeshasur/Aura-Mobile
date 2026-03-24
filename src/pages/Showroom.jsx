@@ -104,6 +104,7 @@ export default function Showroom({ addToCart, isCartOpen, setIsCartOpen, cartCou
                   <img
                     src={phone.imageUrl}
                     alt={phone.name}
+                    loading="lazy"
                     className="relative z-10 h-64 w-full object-contain pointer-events-none transition-transform duration-500 group-hover:scale-110"
                   />
                   <button className="absolute top-2 right-2 z-[50] p-2 rounded-full bg-black/60 backdrop-blur-md border border-white/10 opacity-0 group-hover:opacity-100 transition-all duration-300 hover:bg-black/80 hover:scale-110">
