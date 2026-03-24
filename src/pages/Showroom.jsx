@@ -9,7 +9,7 @@ const allPhones = [
   { id: 4, brand: 'Apple', name: "iPhone 14 Pro Max", price: "Rs. 315,000", imageUrl: "/phones/iPhone 14 Pro Max.jpg" },
   { id: 5, brand: 'Apple', name: "iPhone 14", price: "Rs. 225,000", imageUrl: "/phones/iPhone 14.jpg" },
   { id: 6, brand: 'Samsung', name: "Galaxy S24 Ultra", price: "Rs. 395,000", imageUrl: "/phones/Galaxy S24 Ultra.jpg" },
-  { id: 7, brand: 'Samsung', name: "Galaxy S24+", price: "Rs. 295,000", imageUrl: "/phones/Galaxy S24+.jpg" },
+  { id: 7, brand: 'Samsung', name: "Galaxy S24+", price: "Rs. 295,000", imageUrl: "/phones/Galaxy S24 Plus.jpg" },
   { id: 8, brand: 'Samsung', name: "Galaxy Z Fold 5", price: "Rs. 495,000", imageUrl: "/phones/Galaxy Z Fold 5.jpg" },
   { id: 9, brand: 'Samsung', name: "Galaxy Z Flip 5", price: "Rs. 295,000", imageUrl: "/phones/Galaxy Z Flip 5.jpg" },
   { id: 10, brand: 'Samsung', name: "Galaxy A55 5G", price: "Rs. 145,000", imageUrl: "/phones/Galaxy A55 5G.jpg" },
