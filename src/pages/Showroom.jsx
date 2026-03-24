@@ -9,7 +9,7 @@ const allPhones = [
   { id: 4, brand: 'Apple', name: "iPhone 14 Pro Max", price: "Rs. 315,000", imageUrl: "/phones/iPhone 14 Pro Max.jpg" },
   { id: 5, brand: 'Apple', name: "iPhone 14", price: "Rs. 225,000", imageUrl: "/phones/iPhone 14.jpg" },
   { id: 6, brand: 'Samsung', name: "Galaxy S24 Ultra", price: "Rs. 395,000", imageUrl: "/phones/Galaxy S24 Ultra.jpg" },
-  { id: 7, brand: 'Samsung', name: "Galaxy S24+", price: "Rs. 295,000", imageUrl: "/phones/Galaxy S24+.avif" },
+  { id: 7, brand: 'Samsung', name: "Galaxy S24+", price: "Rs. 295,000", imageUrl: "/phones/Galaxy S24+.jpg" },
   { id: 8, brand: 'Samsung', name: "Galaxy Z Fold 5", price: "Rs. 495,000", imageUrl: "/phones/Galaxy Z Fold 5.jpg" },
   { id: 9, brand: 'Samsung', name: "Galaxy Z Flip 5", price: "Rs. 295,000", imageUrl: "/phones/Galaxy Z Flip 5.jpg" },
   { id: 10, brand: 'Samsung', name: "Galaxy A55 5G", price: "Rs. 145,000", imageUrl: "/phones/Galaxy A55 5G.jpg" },
@@ -33,7 +33,7 @@ export default function Showroom({ addToCart, isCartOpen, setIsCartOpen, cartCou
   const filteredPhones = allPhones.filter(phone => {
     const matchesBrand = selectedBrand === 'All' || phone.brand === selectedBrand;
     const matchesSearch = phone.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                         phone.brand.toLowerCase().includes(searchQuery.toLowerCase());
+      phone.brand.toLowerCase().includes(searchQuery.toLowerCase());
     return matchesBrand && matchesSearch;
   });
 
@@ -44,35 +44,34 @@ export default function Showroom({ addToCart, isCartOpen, setIsCartOpen, cartCou
       <Navbar cartCount={actualCartCount} isCartOpen={isCartOpen} setIsCartOpen={setIsCartOpen} />
 
       <div className="pt-24 pb-8 px-6 flex flex-col items-center gap-4">
-            <div className="relative w-full md:w-96">
-              <svg className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-zinc-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-              </svg>
-              <input
-                type="text"
-                placeholder="Search phones..."
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-12 pr-4 py-3 bg-zinc-900/50 border border-white/10 rounded-xl text-white placeholder:text-zinc-500 focus:outline-none focus:border-white/30 focus:ring-1 focus:ring-white/20 transition-all"
-              />
-            </div>
+        <div className="relative w-full md:w-96">
+          <svg className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-zinc-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+          </svg>
+          <input
+            type="text"
+            placeholder="Search phones..."
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            className="w-full pl-12 pr-4 py-3 bg-zinc-900/50 border border-white/10 rounded-xl text-white placeholder:text-zinc-500 focus:outline-none focus:border-white/30 focus:ring-1 focus:ring-white/20 transition-all"
+          />
+        </div>
 
-            <div className="flex flex-wrap justify-center gap-2">
-              {brands.map((brand) => (
-                <button
-                  key={brand}
-                  onClick={() => setSelectedBrand(brand)}
-                  className={`px-5 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
-                    selectedBrand === brand
-                      ? 'bg-white text-black'
-                      : 'bg-zinc-900/50 text-zinc-400 hover:bg-zinc-800 hover:text-white border border-white/10'
-                  }`}
-                >
-                  {brand}
-                </button>
-              ))}
-            </div>
-          </div>
+        <div className="flex flex-wrap justify-center gap-2">
+          {brands.map((brand) => (
+            <button
+              key={brand}
+              onClick={() => setSelectedBrand(brand)}
+              className={`px-5 py-2 rounded-full text-sm font-medium transition-all duration-300 ${selectedBrand === brand
+                  ? 'bg-white text-black'
+                  : 'bg-zinc-900/50 text-zinc-400 hover:bg-zinc-800 hover:text-white border border-white/10'
+                }`}
+            >
+              {brand}
+            </button>
+          ))}
+        </div>
+      </div>
 
       <div className="max-w-7xl mx-auto px-6 py-12">
         <div className="flex flex-col items-center text-center mb-8">
