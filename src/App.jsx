@@ -7,12 +7,10 @@ import BrandsMarquee from './components/BrandsMarquee';
 import Footer from './components/Footer';
 import Showroom from './pages/Showroom';
 import Support from './pages/Support';
-import Preloader from './components/Preloader';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Navigation } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
-import { AnimatePresence } from 'framer-motion';
 
 const applePhones = [
   { id: 1, name: "iPhone 15 Pro Max", price: "Rs. 395,000", imageUrl: "/phones/iPhone 15 Pro Max.jpg" },
@@ -38,7 +36,6 @@ function App() {
   });
   const [toast, setToast] = useState({ visible: false, message: '' });
   const [isCartOpen, setIsCartOpen] = useState(false);
-  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     localStorage.setItem('aura-cart', JSON.stringify(cart));
@@ -56,9 +53,6 @@ function App() {
 
   return (
     <Router>
-      <AnimatePresence mode="wait">
-        {isLoading && <Preloader onFinish={() => setIsLoading(false)} />}
-      </AnimatePresence>
       <Routes>
         <Route path="/" element={<HomePage cart={cart} addToCart={addToCart} isCartOpen={isCartOpen} setIsCartOpen={setIsCartOpen} />} />
         <Route path="/showroom" element={<Showroom addToCart={addToCart} isCartOpen={isCartOpen} setIsCartOpen={setIsCartOpen} />} />
