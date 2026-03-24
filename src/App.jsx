@@ -23,7 +23,7 @@ const applePhones = [
 
 const samsungPhones = [
   { id: 1, name: "Galaxy S24 Ultra", price: "Rs. 395,000", imageUrl: "/phones/Galaxy S24 Ultra.jpg" },
-  { id: 2, name: "Galaxy S24+", price: "Rs. 295,000", imageUrl: "/phones/Galaxy S24+.avif" },
+  { id: 2, name: "Galaxy S24+", price: "Rs. 295,000", imageUrl: "/phones/Galaxy S24 Plus.jpg" },
   { id: 3, name: "Galaxy Z Fold 5", price: "Rs. 495,000", imageUrl: "/phones/Galaxy Z Fold 5.jpg" },
   { id: 4, name: "Galaxy Z Flip 5", price: "Rs. 295,000", imageUrl: "/phones/Galaxy Z Flip 5.jpg" },
   { id: 5, name: "Galaxy A55 5G", price: "Rs. 145,000", imageUrl: "/phones/Galaxy A55 5G.jpg" },
