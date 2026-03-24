@@ -8,7 +8,6 @@ import Footer from './components/Footer';
 import Showroom from './pages/Showroom';
 import Support from './pages/Support';
 import Preloader from './components/Preloader';
-import CustomCursor from './components/CustomCursor';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Navigation } from 'swiper/modules';
 import 'swiper/css';
@@ -57,7 +56,6 @@ function App() {
 
   return (
     <Router>
-      <CustomCursor />
       <AnimatePresence mode="wait">
         {isLoading && <Preloader onFinish={() => setIsLoading(false)} />}
       </AnimatePresence>
