@@ -1,16 +1,60 @@
-# React + Vite
+# 🌌 Aura Mobile - Premium Store Experience
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+[![Aura Mobile Demo](https://img.youtube.com/vi/GeUN1Rq2k_A/maxresdefault.jpg)](https://youtu.be/GeUN1Rq2k_A)
 
-Currently, two official plugins are available:
+> **A cutting-edge, immersive web experience for high-end mobile devices.**
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+Aura Mobile is a premium e-commerce landing page designed to showcase the latest in mobile technology with a focus on visual excellence, smooth performance, and interactive 3D elements.
 
-## React Compiler
+## ✨ Key Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **🚀 GSAP Animations**: Silk-smooth transitions and scroll-triggered effects.
+- **💎 Premium Design**: Sleek, modern aesthetic with glassmorphism and custom gradients.
+- **📱 Interactive 3D Models**: Explore phone models in a fully interactive 3D showroom powered by Three.js.
+- **⚡ Performance Optimized**: Built with Vite and React for lightning-fast load times.
+- **🎯 Dynamic Cursor & Preloader**: Enhanced user engagement with custom interactive elements.
 
-## Expanding the ESLint configuration
+## 🛠️ Built With
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- **React** - Component-based UI library
+- **Vite** - Next-generation frontend tooling
+- **GSAP** - Professional-grade animations
+- **Three.js / React Three Fiber** - Immersive 3D experiences
+- **Vanilla CSS** - Customizable and high-performance styling
+- **Tailwind CSS** - Modern utility-first CSS framework
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- Node.js (v18.0.0 or higher)
+- npm or yarn
+
+### Installation
+
+1. **Clone the repository**
+
+   ```bash
+   git clone https://github.com/adeshasur/Aura-Mobile.git
+   cd Aura-Mobile
+   ```
+
+2. **Install dependencies**
+
+   ```bash
+   npm install
+   ```
+
+3. **Run the development server**
+
+   ```bash
+   npm run dev
+   ```
+
+4. **Open in browser**
+
+   Navigate to `http://localhost:5173` to see the magic.
+
+---
+
+Built with ❤️ by [Adesha Suriyagoda](https://github.com/adeshasur)
