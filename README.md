@@ -57,4 +57,4 @@ Aura Mobile is a premium e-commerce landing page designed to showcase the latest
 
 ---
 
-Built with ❤️ by [Adesha Suriyagoda](https://github.com/adeshasur)
+Built with ❤️ by [Adheesha Sooriyaarachchi](https://github.com/adeshasur)
