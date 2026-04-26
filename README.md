@@ -1,4 +1,4 @@
-# 🌌 Aura Mobile - Premium Store Experience
+# Aura Mobile - Premium Store Experience
 
 [![Aura Mobile Demo](https://img.youtube.com/vi/GeUN1Rq2k_A/maxresdefault.jpg)](https://youtu.be/GeUN1Rq2k_A)
 
@@ -6,15 +6,15 @@
 
 Aura Mobile is a premium e-commerce landing page designed to showcase the latest in mobile technology with a focus on visual excellence, smooth performance, and interactive 3D elements.
 
-## ✨ Key Features
+## Key Features
 
-- **🚀 GSAP Animations**: Silk-smooth transitions and scroll-triggered effects.
-- **💎 Premium Design**: Sleek, modern aesthetic with glassmorphism and custom gradients.
-- **📱 Interactive 3D Models**: Explore phone models in a fully interactive 3D showroom powered by Three.js.
-- **⚡ Performance Optimized**: Built with Vite and React for lightning-fast load times.
-- **🎯 Dynamic Cursor & Preloader**: Enhanced user engagement with custom interactive elements.
+- **GSAP Animations**: Silk-smooth transitions and scroll-triggered effects.
+- **Premium Design**: Sleek, modern aesthetic with glassmorphism and custom gradients.
+- **Interactive 3D Models**: Explore phone models in a fully interactive 3D showroom powered by Three.js.
+- **Performance Optimized**: Built with Vite and React for lightning-fast load times.
+- **Dynamic Cursor & Preloader**: Enhanced user engagement with custom interactive elements.
 
-## 🛠️ Built With
+## Built With
 
 - **React** - Component-based UI library
 - **Vite** - Next-generation frontend tooling
@@ -23,7 +23,7 @@ Aura Mobile is a premium e-commerce landing page designed to showcase the latest
 - **Vanilla CSS** - Customizable and high-performance styling
 - **Tailwind CSS** - Modern utility-first CSS framework
 
-## 🚀 Getting Started
+## Getting Started
 
 ### Prerequisites
 
@@ -57,4 +57,4 @@ Aura Mobile is a premium e-commerce landing page designed to showcase the latest
 
 ---
 
-Built with ❤️ by [Adheesha Sooriyaarachchi](https://github.com/adeshasur)
+Built with by [Adheesha Sooriyaarachchi](https://github.com/adeshasur)
